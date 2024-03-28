@@ -9,3 +9,6 @@
 
 <style scoped>
 </style>
+
+<!--dove lo devo mettere???
+// import {storeToRefs} form "pinia"-->
