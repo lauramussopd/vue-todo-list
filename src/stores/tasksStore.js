@@ -1,12 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { fetchAllTasks } from '@/api/tasksApi'
+import { createTask, fetchAllTasks } from '@/api/tasksApi'
 
 //es aconsejable tener uno store por cada funcionalidad de mi pagina
 
 export const useTasksStore = defineStore('tasks', () => {
   // State -- pongo lo que va a ser leido 
-  const tasks = ref([])
+  const tasks = ref([]) //variable reactiva de tipo array
+    
 
   // Getters
 
@@ -20,7 +21,7 @@ export const useTasksStore = defineStore('tasks', () => {
   }
 
   return { //la funzione mi ritorna un oggetto, 
-    //tutto quello che ssara usato fuori da qui
+    //tutto quello che sara usato fuori da qui
     
     // State
     tasks,

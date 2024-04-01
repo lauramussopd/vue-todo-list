@@ -30,12 +30,14 @@ router.beforeEach(async (to, from, next) => {
   if (userStore.user === undefined) {
     await userStore.fetchUser()
   }
-
   if (userStore.user === null && to.name !== 'signin') {
+    console.log("test1")
     next({ name: 'signin' })
   } else {
+    console.log("test2")
     next()
   }
 })
+
 
 export default router

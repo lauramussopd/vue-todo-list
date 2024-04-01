@@ -1,14 +1,24 @@
 <script setup>
+/*import { ref } from 'vue'
+import { useUserStore } from '@/stores/userStore'
+import { useTaskStore } from '@/stores/userStore'
+import { storeToRefs } from 'pinia';
+
+const taskStore = useTaskStore();
+const { tasks } = storeToRefs(taskStore);*/
 </script>
 
 <template>
 	<main>
-		<h1>Home View!</h1>
+		<h1>home</h1>
+	<!--	<span>Tasks: {{ tasks.lenght }}</span>
+		<ul>
+			<li v-for="task in tasks" :key="task.id">
+				{{ task.title }}
+			</li>
+		</ul>-->
 	</main>
 </template>
 
 <style scoped>
 </style>
-
-<!--dove lo devo mettere???
-// import {storeToRefs} form "pinia"-->
