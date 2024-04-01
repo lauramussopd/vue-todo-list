@@ -22,4 +22,4 @@ const { tasks } = storeToRefs(taskStore);*/
 </template>
 
 <style scoped>
-</style>@/stores/tasksStore
+</style>

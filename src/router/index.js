@@ -60,7 +60,7 @@ router.beforeEach(async (to, from, next) => {
     console.log("test1")
     next({ name: 'signin' })
   } else {
-    console.log("now you can go to the other pages!")
+    console.log("test2")
     next()
   }
 })
