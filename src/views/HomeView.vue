@@ -1,7 +1,8 @@
 <script setup>
-/*import { ref } from 'vue'
+/*import { useTaskStore } from '@/stores/taskStore'
+import { ref } from 'vue'
 import { useUserStore } from '@/stores/userStore'
-import { useTaskStore } from '@/stores/userStore'
+
 import { storeToRefs } from 'pinia';
 
 const taskStore = useTaskStore();
@@ -21,4 +22,4 @@ const { tasks } = storeToRefs(taskStore);*/
 </template>
 
 <style scoped>
-</style>
+</style>@/stores/tasksStore

@@ -3,6 +3,10 @@ import HomeView from '@/views/HomeView.vue'
 
 import { useUserStore } from '@/stores/userStore'
 
+import { supabase } from '@/api/supabase'
+
+let localUser;
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -24,6 +28,28 @@ const router = createRouter({
   ]
 })
 
+//getUser
+async function getUser() {
+  localUser = await supabase.auth.getSession();
+  if(localUser.data.session == null) {
+    next({ name: 'signin' })
+  }
+}
+
+
+//auth requirements
+
+/*
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    console.log("requires auth")
+  }
+  else {
+    next
+  }
+})
+*/
+
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
 
@@ -34,10 +60,14 @@ router.beforeEach(async (to, from, next) => {
     console.log("test1")
     next({ name: 'signin' })
   } else {
-    console.log("test2")
+    console.log("now you can go to the other pages!")
     next()
   }
 })
 
 
-export default router
+
+
+export default router;
+
+
