@@ -1,10 +1,10 @@
-import { ref } from 'vue'
+/*import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { createTasks,fetchAllTasks } from '@/api/tasksApi'
 import { compileStyle } from 'vue/compiler-sfc'
 
 //es aconsejable tener uno store por cada funcionalidad de mi pagina
-/*
+
 export const useTaskStore = defineStore('taskStore', {
   state: () => ({
     tasks: [
@@ -13,7 +13,7 @@ export const useTaskStore = defineStore('taskStore', {
     ]
   })
 })
-/*
+
 export const useTasksStore = defineStore('tasks', () => {
   // State -- pongo lo que va a ser leido 
   const tasks = ref([]) //variable reactiva de tipo array
