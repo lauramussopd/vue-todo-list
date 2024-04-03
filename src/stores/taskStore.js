@@ -20,7 +20,14 @@ export const useTaskStore = defineStore("taskStore", () => {
   const totalCount = () => tasks.value.length;
 
   // Actions
-
+  async function fetchTasks() {
+    try {
+      const data = await fetchAllTasks(); // Chiama la funzione per recuperare le task da Supabase
+      tasks.value = data; // Aggiorna le task nel tuo store con i dati recuperati da Supabase
+    } catch (error) {
+      console.error(error);
+    }
+  }
   const addTask = async (task) => {
     try {
       await createTask(task); // Chiama la funzione per creare la task su Supabase
@@ -41,14 +48,7 @@ export const useTaskStore = defineStore("taskStore", () => {
   };
 
 
-  async function fetchTasks() {
-    try {
-      const data = await fetchAllTasks(); // Chiama la funzione per recuperare le task da Supabase
-      tasks.value = data; // Aggiorna le task nel tuo store con i dati recuperati da Supabase
-    } catch (error) {
-      console.error(error);
-    }
-  }
+
 
   // Chiamare fetchTasks al momento dell'inizializzazione dello store
   fetchTasks();

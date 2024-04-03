@@ -1,6 +1,12 @@
 @import './base.css';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+}
+/* 
 body {
   background: #f2f2f2;
   color: #444;
@@ -23,10 +29,10 @@ button {
   padding: 4px 8px;
   cursor: pointer;
   font-size: 0.8em;
-}
+} */
 
 /* header */
-header {
+/* header {
   text-align: center;
   background: #e7e7e7;
   padding-top: 20px;
@@ -42,10 +48,10 @@ header h1 {
   margin-left: 15px;
   color: #777;
   transform: rotate(2deg);
-}
+} */
 
 /* task list */
-
+/* 
 .task-list {
   max-width: 640px;
   margin: 20px auto;
@@ -71,10 +77,10 @@ header h1 {
 }
 .task i.active{
   color: #ff005d;
-}
+} */
 
 /* filter nav */
-
+/* 
 .filter {
   width: 640px;
   margin: 10px auto;
@@ -113,4 +119,4 @@ a,
   }
 }
 
-
+ */

@@ -1,6 +1,6 @@
 import { supabase } from '@/api/supabase'
 
-//  const TABLE_NAME = 'tasks'
+ const TABLE_NAME = 'tasks'
 
 //  export const fetchTasks = async () => {
 //   const { data, error } = await supabase.from(TABLE_NAME).select('*')
@@ -13,7 +13,7 @@ import { supabase } from '@/api/supabase'
 // }
 export const fetchAllTasks = async () => {
   const { data, error } = await supabase
-  .from('tasks')
+  .from(TABLE_NAME)
   .select('*')
 
   if (error) {
@@ -25,7 +25,7 @@ export const fetchAllTasks = async () => {
 
 export const createTask = async (task) => {
   const { error } = await supabase
-  .from('tasks')
+  .from(TABLE_NAME)
   .insert({
     // Inserire solo i campi necessari per la creazione della task
     title: task.title,
@@ -34,6 +34,4 @@ export const createTask = async (task) => {
   if (error) {
     throw new Error(error.message)
   }
-
-  return data;
 }
