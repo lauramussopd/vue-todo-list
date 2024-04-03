@@ -6,6 +6,10 @@ import taskForm from '@/components/taskForm.vue';
 
 const taskStore = useTaskStore();
 const filter = ref('all');
+
+const setFilter = (selectedFilter) => {
+  filter.value = selectedFilter;
+};
 </script>
 
 <template>
@@ -19,20 +23,20 @@ const filter = ref('all');
 		</div>
 		<!-- filter -->
 			<nav class="filter">
-				<button @click="filter = 'all'">All tasks</button>
-				<button @click="filter = 'favs'">Fav tasks</button>
+				<button @click="setFilter ('all')">All tasks</button>
+				<button @click="setFilter('favs')">Fav tasks</button>
 			</nav>
 		<!-- task list -->
 		<div class="task-list" v-if="filter === 'all'">
-			<p>You have {{ taskStore.totalCount }} tasks left to do</p>
+			<p>You have {{ taskStore.totalCount() }} tasks left to do</p>
 			<div v-for="task in taskStore.tasks">
 				<taskDetails :task="task"/>
 			</div>
 		</div>
 
 		<div class="task-list" v-if="filter === 'favs'">
-			<p>You have {{ taskStore.favCount }} favs left to do</p>
-			<div v-for="task in taskStore.favs">
+			<p>You have {{ taskStore.favCount() }} favs left to do</p>
+			<div v-for="task in taskStore.favs()">
 				<taskDetails :task="task"/>
 			</div>
 		</div>
