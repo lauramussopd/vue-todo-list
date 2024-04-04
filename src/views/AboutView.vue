@@ -41,34 +41,6 @@ const setFilter = (selectedFilter) => {
 
 
 
-
-
-	<!-- <main>
-
-		<div class="new-task-form">
-			<taskForm />
-
-		</div>
-
-		<nav class="filter">
-			<button @click="setFilter('all')">All tasks</button>
-			<button @click="setFilter('favs')">Fav tasks</button>
-		</nav>
-
-		<div class="task-list" v-if="filter === 'all'">
-			<p>You have {{ taskStore.totalCount() }} tasks left to do</p>
-			<div v-for="task in taskStore.tasks">
-				<taskDetails :task="task" />
-			</div>
-		</div>
-
-		<div class="task-list" v-if="filter === 'favs'">
-			<p>You have {{ taskStore.favCount() }} favs left to do</p>
-			<div v-for="task in taskStore.favs()">
-				<taskDetails :task="task" />
-			</div>
-		</div>
-	</main> -->
 </template>
 
 <style scoped>
@@ -80,8 +52,8 @@ const setFilter = (selectedFilter) => {
 button {
 	display: inline-block;
 	margin-left: 10px;
-	background: #fff;
-	border: 2px solid #555;
+	background: #bbb;
+	border: none;
 	border-radius: 4px;
 	padding: 4px 8px;
 	cursor: pointer;

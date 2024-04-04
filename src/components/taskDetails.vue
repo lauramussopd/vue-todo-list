@@ -33,14 +33,14 @@ const toggleFav = (taskId) => {
 }
 
 .task {
-	padding: 6px 20px;
+	/* padding: 6px 20px;
 	background-color: #fff;
-	margin-top: 20px;
-	border-radius: 4px;
-	box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	margin-top: 20px; */
+	/* border-radius: 4px;
+	box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05); */
+	/* display: flex;
+	justify-content: space-between; */
+	/* align-items: center; */
 }
 
 .task .icon {

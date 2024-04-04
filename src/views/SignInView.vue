@@ -1,12 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/userStore'
+
 
 const email = ref("")
 const password = ref("")
 const name = ref("")
 
 const userStore = useUserStore()
+const router = useRouter()
 
 const createAccount = async () => {
   try {
@@ -16,12 +19,23 @@ const createAccount = async () => {
   }
 }
 
+// const signIn = async () => {
+//   try {
+//     await userStore.signIn(email.value, password.value)
+//     console.log("trying login")
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
+
 const signIn = async () => {
   try {
-    await userStore.signIn(email.value, password.value)
-    console.log("trying login")
+    await userStore.signIn(email.value, password.value);
+    console.log("trying login");
+    // Dopo il login, puoi navigare alla pagina "about" o fare altre azioni necessarie
+    router.push({ name: 'about' });
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
@@ -88,10 +102,6 @@ const logout = async () => {
           <div class="row">
             <small>Don't have account? <a href="#" @click="createAccount">Sign Up</a></small>
           </div>
-          <div class="buttonContainer">
-            <button @click="seeCurrentUser">See Current User</button>
-            <button @click="logout">Logout</button>
-          </div>
         </div>
       </div>
     </div>
@@ -102,17 +112,6 @@ const logout = async () => {
 .buttonContainer {
   display: grid;
 }
-
-/* .userLabel {
-  padding: 6px 20px;
-  background-color: #fff;
-  margin: 20px 0;
-  border-radius: 4px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
 
  button {
   background-color: #44c9c8;

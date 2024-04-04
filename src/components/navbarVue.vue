@@ -15,12 +15,13 @@ const toggleNavbar = () => {
 };
 
 const _handleLogOut = () => {
-    try {
-        userStore.logout()
-        router.push({ name: 'signin' })
-    } catch (err) {
-        console.error(err)
-    }
+    userStore.logout()
+        .then(() => {
+            router.push({ name: 'signin' }); // Navigare alla pagina di accesso dopo il logout
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
 
 </script>
