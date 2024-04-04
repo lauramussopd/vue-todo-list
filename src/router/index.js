@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue'
 import { useUserStore } from '@/stores/userStore'
 
 import { supabase } from '@/api/supabase'
+import { ROUTES } from '@/utils/constants'
 
 let localUser;
 
@@ -11,8 +12,8 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: ROUTES.HOME.path,
+      name: ROUTES.HOME.name,
       component: HomeView
     },
     {
@@ -59,8 +60,10 @@ router.beforeEach(async (to, from, next) => {
   if (userStore.user === null && to.name !== 'signin') {
     console.log("test1")
     next({ name: 'signin' })
-  } else {
+  } else if (to.name === 'signin' && userStore.user) {
     console.log("test2")
+    next({ name: 'about' })
+  } else {
     next()
   }
 })

@@ -1,9 +1,10 @@
 //create an action que llama taslks AP
 
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { defineStore } from "pinia";
-import { createTask, fetchAllTasks } from "@/api/tasksApi"; //nuovo
-import { compileStyle } from "vue/compiler-sfc";
+import { createTask, fetchAllTasks, deleteTaskFromDatabase } from "@/api/tasksApi"; //nuovo
+import { TASKS_FILTER_METHODS } from '@/utils/constants';
+import { useUserStore } from "@/stores/userStore";
 
 export const useTaskStore = defineStore("taskStore", () => {
   // State
@@ -13,11 +14,19 @@ export const useTaskStore = defineStore("taskStore", () => {
   //     { id: 3, title: "baciniiii", isFav: true },
   //   ]);
   const tasks = ref([]);
+  const filterTaskMethod = ref(TASKS_FILTER_METHODS.ALL)
 
   // Getters
-  const favs = () => tasks.value.filter((t) => t.isFav);
-  const favCount = () => tasks.value.reduce((p, c) => (c.isFav ? p + 1 : p), 0);
-  const totalCount = () => tasks.value.length;
+  const tasksFiltered = computed(() => {
+    if (filterTaskMethod.value === TASKS_FILTER_METHODS.ALL) {
+      return tasks.value
+    }
+
+    if (filterTaskMethod.value === TASKS_FILTER_METHODS.FAVS) {
+      return tasks.value.filter(t => t.isFav)
+    }
+  });
+  const favCount = computed(() => tasks.value.reduce((p, c) => (c.isFav ? p + 1 : p), 0));
 
   // Actions
   async function fetchTasks() {
@@ -29,25 +38,33 @@ export const useTaskStore = defineStore("taskStore", () => {
     }
   }
   const addTask = async (task) => {
+    const userStore = useUserStore()
     try {
-      await createTask(task); // Chiama la funzione per creare la task su Supabase
-      tasks.value.push(task);
+      const newTask = await createTask(task, userStore.user.id); // Chiama la funzione per creare la task su Supabase
+      tasks.value.push(newTask); //passa l'id dell'usuario con cui devi iniziare sessione
     } catch (error) {
       console.error(error);
     }
   };
 
 
-  const deleteTask = (id) => {
-    tasks.value = tasks.value.filter((t) => t.id !== id);
+  const deleteTask = async (id) => {
+    try {
+      await deleteTaskFromDatabase(id); // Chiamiamo la nuova funzione deleteTask per eliminare la task dal database
+      tasks.value = tasks.value.filter((t) => t.id !== id); // Aggiorniamo lo stato locale rimuovendo la task
+    } catch (error) {
+      console.error("Errore ", error);
+      // Gestione degli errori
+    }
   };
-
   const toggleFav = (id) => {
     const task = tasks.value.find((t) => t.id === id);
     task.isFav = !task.isFav;
   };
 
-
+  const changeFilterTaskMethod = (filterMethod) => {
+    filterTaskMethod.value = filterMethod
+  }
 
 
   // Chiamare fetchTasks al momento dell'inizializzazione dello store
@@ -58,13 +75,13 @@ export const useTaskStore = defineStore("taskStore", () => {
     // State
     tasks,
     // Getters
-    favs,
+    tasksFiltered,
     favCount,
-    totalCount,
     // Actions
     addTask,
     deleteTask,
     toggleFav,
     fetchTasks,
+    changeFilterTaskMethod,
   };
 });

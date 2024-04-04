@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { supabase } from "@/api/supabase";
-import { fetchActualUser, createNewUser, logIn } from "@/api/userApi";
+import { fetchActualUser, createNewUser, logIn, logOut } from "@/api/userApi";
 
 export const useUserStore = defineStore("user", () => {
   // State
@@ -65,14 +65,7 @@ export const useUserStore = defineStore("user", () => {
 
   async function logout() {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.log(error);
-      } else {
-        user.value = null;
-        console.log("logout succeeded");
-      }
-      console.log("logout");
+      user.value = await logOut()
     } catch (error) {
       console.log(error);
     }

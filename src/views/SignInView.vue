@@ -43,36 +43,6 @@ const logout = async () => {
 }
 </script>
 
-<!-- <template>
-	<main class="container">
-		<h1>Sign In View!</h1>
-		<div class="inputContainer">
-			<label class="userLabel">
-				User Email:
-				<input type="text" v-model="email" />
-			</label>
-			<label class="userLabel">
-				Password:
-				<input type="password" v-model="password" />
-			</label>
-		</div>
-
-		<div class="inputContainer">
-			<label class="userLabel">
-				First Name:
-				<input type="name" v-model="name" />
-			</label>
-		</div>
-
-		<div class="buttonContainer">
-			<button @click="createAccount">Create Account</button>
-			<button @click="signIn">Sign In</button> 
-			<button @click="seeCurrentUser">See Current User</button>
-			<button @click="logout">Logout</button>
-		</div>
-	</main>
-</template> -->
-
 <template>
 
   <!----------------------- Main Container -------------------------->
@@ -87,12 +57,11 @@ const logout = async () => {
 
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
         style="background: #44c9c8;">
-        <div class="featured-image mb-3">
+        <!-- <div class="featured-image mb-3">
           <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
-        </div>
+        </div> -->
         <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
-        <small class="text-white text-wrap text-center" style="width: 17rem;">Join experienced Designers on this
-          platform.</small>
+        <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
       </div>
 
       <!-------------------- ------ Right Box ---------------------------->
@@ -114,7 +83,7 @@ const logout = async () => {
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
-            <button class="btn btn-lg w-100 fs-6 btn-info" @click="signIn">Login</button>
+            <button class="btn btn-lg w-100 fs-6" @click="signIn">Login</button>
           </div>
           <div class="row">
             <small>Don't have account? <a href="#" @click="createAccount">Sign Up</a></small>

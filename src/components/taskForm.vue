@@ -11,7 +11,6 @@ const handleSubmit = () => {
         taskStore.addTask({
             title: newTask.value,
             isFav: false,
-            id: Math.floor(Math.random() * 10000)
         });
         newTask.value = '';
     }
@@ -19,10 +18,10 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <form @submit.prevent="handleSubmit">
+    <form>
         <input type="text" placeholder="I need to.." 
         v-model="newTask" id="">
-        <button>Add</button>
+        <button @click.prevent.stop="handleSubmit">Add</button>
     </form>
 </template>
 

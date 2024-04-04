@@ -1,14 +1,17 @@
 <script setup>
 import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
 import { useTaskStore } from '@/stores/taskStore';
 import taskDetails from '@/components/taskDetails.vue';
 import taskForm from '@/components/taskForm.vue';
+import { TASKS_FILTER_METHODS } from '@/utils/constants'
 
 const taskStore = useTaskStore();
-const filter = ref('all');
+const { tasksFiltered } = storeToRefs(taskStore);
 
 const setFilter = (selectedFilter) => {
-	filter.value = selectedFilter;
+	taskStore.changeFilterTaskMethod(selectedFilter)
+	console.log(tasksFiltered.value)
 };
 </script>
 
@@ -16,8 +19,8 @@ const setFilter = (selectedFilter) => {
 	<div class="row align-items-center">
 
 		<nav class="filter mb-4">
-			<button @click="setFilter('all')">All tasks</button>
-			<button @click="setFilter('favs')">Fav tasks</button>
+			<button @click="setFilter(TASKS_FILTER_METHODS.ALL)">All tasks</button>
+			<button @click="setFilter(TASKS_FILTER_METHODS.FAVS)">Fav tasks</button>
 		</nav>
 		<div class="header-text mb-4">
 		</div>
@@ -25,12 +28,11 @@ const setFilter = (selectedFilter) => {
 			<taskForm />
 		</div>
 		<div class="input-group mb-5 d-flex justify-content-between">
-
 		</div>
 		<div class="input-group mb-3">
-			<div class="task-list" v-if="filter === 'all'">
-				<p>You have {{ taskStore.totalCount() }} tasks left to do</p>
-				<div v-for="task in taskStore.tasks">
+			<div class="task-list" v-if="tasksFiltered.length">
+				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
+				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
 				</div>
 			</div>
@@ -72,14 +74,33 @@ const setFilter = (selectedFilter) => {
 <style scoped>
 .new-task-form {
 	background: #e7e7e7;
-	padding: 20px 0;
+	/* padding: 20px 0; */
+}
+
+button {
+	display: inline-block;
+	margin-left: 10px;
+	background: #fff;
+	border: 2px solid #555;
+	border-radius: 4px;
+	padding: 4px 8px;
+	cursor: pointer;
+	font-size: 0.8em;
+}
+
+/* filter nav */
+
+.filter {
+	width: 640px;
+	margin: 10px auto;
+	text-align: right;
 }
 
 /* task list */
 
 .task-list {
-
-	margin: 20px auto;
+	/* max-width: 640px; */
+	margin: 20px auto; 
 }
 
 .task {
