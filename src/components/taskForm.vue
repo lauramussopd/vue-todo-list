@@ -35,7 +35,7 @@ form {
     gap: 10px;
 }
 form button {
-    background:  #ffd859;
+    background:  #44c9c8;
     border: 0;
     padding: 10px;
     border-radius: 6px;
@@ -47,7 +47,7 @@ form input {
     border: 0;
     padding: 10px;
     border-radius: 6px;
-    color:  #555;
+    color:  #44c9c8;
     font-size: 1em;
 }
 

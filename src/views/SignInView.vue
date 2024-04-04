@@ -76,27 +76,31 @@ const logout = async () => {
 <template>
 
   <!----------------------- Main Container -------------------------->
+
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
+
     <!----------------------- Login Container -------------------------->
+
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
+
       <!--------------------------- Left Box ----------------------------->
+
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
         style="background: #44c9c8;">
         <div class="featured-image mb-3">
-          <img src="../assets/gumball.png" class="img-fluid" style="width: 250px;">
+          <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
         </div>
-        <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be Verified
-        </p>
-        <small class="text-white text-wrap text-center"
-          style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Join experienced Designers on this
+        <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
+        <small class="text-white text-wrap text-center" style="width: 17rem;">Join experienced Designers on this
           platform.</small>
       </div>
+
       <!-------------------- ------ Right Box ---------------------------->
 
       <div class="col-md-6 right-box">
         <div class="row align-items-center">
           <div class="header-text mb-4">
-            <h2>Hello,Again</h2>
+            <h2>Hello, again</h2>
             <p>We are happy to have you back.</p>
           </div>
           <div class="input-group mb-3">
@@ -108,13 +112,6 @@ const logout = async () => {
               placeholder="Password">
           </div>
           <div class="input-group mb-5 d-flex justify-content-between">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="formCheck">
-              <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
-            </div>
-            <div class="forgot">
-              <small><a href="#">Forgot Password?</a></small>
-            </div>
           </div>
           <div class="input-group mb-3">
             <button class="btn btn-lg w-100 fs-6 btn-info" @click="signIn">Login</button>
@@ -133,9 +130,10 @@ const logout = async () => {
 </template>
 
 <style scoped>
-.buttonContainer{
+.buttonContainer {
   display: grid;
 }
+
 /* .userLabel {
   padding: 6px 20px;
   background-color: #fff;
@@ -147,11 +145,11 @@ const logout = async () => {
   align-items: center;
 } */
 
-/* button {
+ button {
   background-color: #44c9c8;
   border: none;
   color: #fff;
-} */
+} 
 
 /*------------ Login container ------------*/
 .box-area {
