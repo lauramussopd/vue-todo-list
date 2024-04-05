@@ -21,15 +21,6 @@ const createAccount = async () => {
   }
 }
 
-// const signIn = async () => {
-//   try {
-//     await userStore.signIn(email.value, password.value)
-//     console.log("trying login")
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
-
 const signIn = async () => {
   try {
     await userStore.signIn(email.value, password.value);
@@ -72,7 +63,7 @@ const logout = async () => {
       <!--------------------------- Left Box ----------------------------->
 
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-        style="background: #44c9c8;">
+        style="background: #009292;">
         <!-- <div class="featured-image mb-3">
           <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
         </div> -->
@@ -159,4 +150,6 @@ const logout = async () => {
     padding: 20px;
   }
 }
+
+
 </style>

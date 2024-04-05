@@ -18,35 +18,37 @@ const toggleNavbar = () => {
 
 
 <template>
+	<div class="app">
 	<navbarVue />
 	<main class="mainApp">
 	  <div class="content">
 		<router-view />
 	  </div>
 	</main>
+</div>
   </template>
   
   
   
 
-<style scoped>
+  <style scoped>
 
-nav {
+  nav {
 	width: 100%;
 	font-size: 12px;
 	text-align: center;
-}
-
-.navbar{
-	width: 100vw;
+  }
+  
+  .navbar {
+	width: 100%;
 	background-color: #44c9c8;
-}
-nav a.router-link-exact-active {
+  }
+  
+  nav a.router-link-exact-active {
 	color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
+  }
+  
+  nav a.router-link-exact-active:hover {
 	background-color: transparent;
-}
-
-</style>
+  }
+  </style>

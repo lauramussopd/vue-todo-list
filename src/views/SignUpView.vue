@@ -20,16 +20,6 @@ const createAccount = async () => {
   }
 }
 
-const signIn = async () => {
-  try {
-    await userStore.signIn(email.value, password.value);
-    console.log("trying login");
-    // Dopo il login, puoi navigare alla pagina "about" o fare altre azioni necessarie
-    router.push({ name: 'about' });
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 const seeCurrentUser = async () => {
   try {
@@ -45,26 +35,37 @@ const seeCurrentUser = async () => {
 
   <!----------------------- Main Container -------------------------->
 
-  <!-- <div class="container d-flex justify-content-center align-items-center min-vh-100"> -->
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
     <!----------------------- Login Container -------------------------->
 
-    <!-- <div class="row border rounded-5 p-3 bg-white shadow box-area"> -->
+     <div class="row border rounded-5 p-3 bg-white shadow box-area"> 
 
       <!--------------------------- Left Box ----------------------------->
-
-<h1>Hello</h1>
+      <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+        style="background: #009292;">
+        <!-- <div class="featured-image mb-3">
+          <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
+        </div> -->
+        <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
+        <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
+      </div>
       <!-------------------- ------ Right Box ---------------------------->
 
       <div class="col-md-6 right-box">
         <div class="row align-items-center">
           <div class="header-text mb-4">
-            <h2>Hello, again</h2>
-            <p>We are happy to have you back.</p>
+            <h2>Welcome!</h2>
+            <p>Let’s begin the adventure</p>
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group mb-1">
             <input type="text" v-model="email" class="form-control form-control-lg bg-light fs-6"
               placeholder="Email address" />
+          </div>
+          
+          <div class="input-group mb-1">
+            <input type="text" class="form-control form-control-lg bg-light fs-6"
+              placeholder="Name">
           </div>
           <div class="input-group mb-1">
             <input type="password" v-model="password" class="form-control form-control-lg bg-light fs-6"
@@ -77,6 +78,8 @@ const seeCurrentUser = async () => {
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </template> 
 
 <style scoped>
