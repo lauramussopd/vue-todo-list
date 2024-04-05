@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { defineStore } from "pinia";
 import { supabase } from "@/api/supabase";
 import { fetchActualUser, createNewUser, logIn, logOut } from "@/api/userApi";
@@ -6,7 +6,12 @@ import { fetchActualUser, createNewUser, logIn, logOut } from "@/api/userApi";
 export const useUserStore = defineStore("user", () => {
   // State
   const user = ref(undefined);
-  
+
+  // Getter
+  const isAuthenticated = computed(() => {
+    return user.value !== undefined && user.value !== null;
+  });
+
   // Actions
   async function fetchUser() {
     try {
@@ -18,7 +23,7 @@ export const useUserStore = defineStore("user", () => {
       }
     }
   }
-  
+
   async function createAccount(email, password, name) {
     try {
       const { data, error } = await supabase.auth.signUp({
@@ -30,12 +35,12 @@ export const useUserStore = defineStore("user", () => {
           },
         },
       });
-     console.log(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   async function signUp(email, password) {
     try {
       user.value = await createNewUser(email, password);
@@ -65,7 +70,7 @@ export const useUserStore = defineStore("user", () => {
 
   async function logout() {
     try {
-      user.value = await logOut()
+      user.value = await logOut();
     } catch (error) {
       console.log(error);
     }
@@ -74,6 +79,7 @@ export const useUserStore = defineStore("user", () => {
   return {
     // State
     user,
+
     // Actions
     createAccount,
     fetchUser,
@@ -81,5 +87,6 @@ export const useUserStore = defineStore("user", () => {
     signIn,
     seeCurrentUser,
     logout,
+    isAuthenticated,
   };
 });

@@ -25,6 +25,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: () => import('@/views/AboutView.vue')
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('@/views/SignUpView.vue')
     }
   ]
 })
@@ -38,26 +43,13 @@ async function getUser() {
 }
 
 
-//auth requirements
-
-/*
-router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth) {
-    console.log("requires auth")
-  }
-  else {
-    next
-  }
-})
-*/
-
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
 
   if (userStore.user === undefined) {
     await userStore.fetchUser()
   }
-  if (userStore.user === null && to.name !== 'signin') {
+  if (userStore.user === null && to.name !== 'signin' && to.name !== 'signup') {
     console.log("test1")
     next({ name: 'signin' })
   } else if (to.name === 'signin' && userStore.user) {

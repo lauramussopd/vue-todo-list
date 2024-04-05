@@ -38,3 +38,12 @@ export const logOut = async () => {
 
   return undefined;
 }
+async function checkAuthentication() {
+  try {
+    const session = await supabase.auth.session();
+    const user = session?.user || null;
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
+}

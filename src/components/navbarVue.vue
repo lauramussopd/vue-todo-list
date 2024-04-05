@@ -45,10 +45,11 @@ const _handleLogOut = () => {
 			  </li>
 			  <li class="nav-item">
 				<router-link to="/signin" class="nav-link">Sign In</router-link>
+                <button v-if="userStore.isAuthenticated" @click="_handleLogOut" class="nav-link">Log Out</button>
 			  </li>
-              <li class="nav-item">
-                <button @click="_handleLogOut">Log Out</button>
-			  </li>
+              <!-- <li class="nav-item">
+                 <button class="nav nav-link" @click="_handleLogOut">Log Out</button> 
+			  </li> -->
 			</ul>
 		  </div>
 		</div>
@@ -71,6 +72,7 @@ nav {
 
 .nav-link, .navbar-brand{
     color: #fff;
+    text-align: center;
 }
 .navbar {
 	width: 100vw;

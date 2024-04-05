@@ -14,21 +14,11 @@ const router = useRouter()
 const createAccount = async () => {
   try {
     await userStore.createAccount(email.value, password.value, name.value);
-    // Dopo la creazione dell'account, puoi navigare alla pagina di registrazione
-    router.push({ name: 'signup' });
+    router.push({ name: 'about' });
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }
-
-// const signIn = async () => {
-//   try {
-//     await userStore.signIn(email.value, password.value)
-//     console.log("trying login")
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
 
 const signIn = async () => {
   try {
@@ -49,37 +39,21 @@ const seeCurrentUser = async () => {
   }
 }
 
-const logout = async () => {
-  try {
-    await userStore.logout()
-    console.log("logout OK")
-  } catch (error) {
-    console.error(error)
-  }
-}
 </script>
 
 <template>
 
   <!----------------------- Main Container -------------------------->
 
-  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <!-- <div class="container d-flex justify-content-center align-items-center min-vh-100"> -->
 
     <!----------------------- Login Container -------------------------->
 
-    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+    <!-- <div class="row border rounded-5 p-3 bg-white shadow box-area"> -->
 
       <!--------------------------- Left Box ----------------------------->
 
-      <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-        style="background: #44c9c8;">
-        <!-- <div class="featured-image mb-3">
-          <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
-        </div> -->
-        <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
-        <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
-      </div>
-
+<h1>Hello</h1>
       <!-------------------- ------ Right Box ---------------------------->
 
       <div class="col-md-6 right-box">
@@ -99,16 +73,11 @@ const logout = async () => {
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
-            <button class="btn btn-lg w-100 fs-6" @click="signIn">Login</button>
-          </div>
-          <div class="row">
-            <small>Don't have account? <a href="/signup" @click="createAccount">Sign Up</a></small>
+            <button class="btn btn-lg w-100 fs-6" @click="createAccount">Create account</button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</template>
+</template> 
 
 <style scoped>
 .buttonContainer {
