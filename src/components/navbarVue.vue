@@ -28,7 +28,7 @@ const _handleLogOut = () => {
 
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-sm">
             <div class="container-fluid">
                 <router-link to="/" class="navbar-brand">To do list</router-link>
                 <button class="navbar-toggler" type="button" @click="toggleNavbar" aria-controls="navbarsExample05"
@@ -36,11 +36,11 @@ const _handleLogOut = () => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div :class="{ 'collapse': !isNavbarOpen, 'navbar-collapse': true }" id="navbarsExample05">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                <div :class="{ 'collapse': !isNavbarOpen, 'navbar-collapse': true }">
+                    <ul class="navbar-nav me-auto m-0">
+                        <!-- <li class="nav-item">
                             <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <router-link to="/about" class="nav-link">Tasks</router-link>
                         </li>
@@ -50,13 +50,6 @@ const _handleLogOut = () => {
                         <li class="nav-item" v-else>
                             <button @click="_handleLogOut" class="nav-link">Log Out</button>
                         </li>
-                        <!--<li class="nav-item">
-				<router-link to="/signin" class="nav-link">Sign In</router-link>
-                <button v-if="userStore.isAuthenticated" @click="_handleLogOut" class="nav-link">Log Out</button>
-			  </li>
-               <li class="nav-item">
-                 <button class="nav nav-link" @click="_handleLogOut">Log Out</button> 
-			  </li> -->
                     </ul>
                 </div>
             </div>

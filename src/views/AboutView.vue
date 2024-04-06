@@ -30,7 +30,7 @@ const setFilter = (selectedFilter) => {
 		<div class="input-group mb-5 d-flex justify-content-between">
 		</div>
 		<div class="input-group mb-3">
-			<div class="task-list" v-if="tasksFiltered.length">
+			<div class="task-list-about" v-if="tasksFiltered.length">
 				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
 				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
@@ -46,13 +46,11 @@ const setFilter = (selectedFilter) => {
 <style scoped>
 .new-task-form {
 	background: #e7e7e7;
-	/* padding: 20px 0; */
 }
 
 button {
 	display: inline-block;
 	margin-left: 10px;
-	background: #bbb;
 	border: none;
 	border-radius: 4px;
 	padding: 4px 8px;
@@ -70,34 +68,15 @@ button {
 
 /* task list */
 
-.task-list {
-	/* max-width: 640px; */
-	margin: 20px auto; 
-}
+.task-list-about {
+	max-width: 400px;
+    margin: 20px auto;
+    width: 400px;
+	padding: 20px;
+    background-color: rgba(252, 252, 212, 0.5); 
+    border-radius: 5px;
+    box-shadow: 3px 3px 21px #DDD;
+} 
 
-.task {
-	padding: 6px 20px;
-	background-color: #fff;
-	margin-top: 20px;
-	border-radius: 4px;
-	box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
 
-.task .icon {
-	text-align: right;
-}
-
-.task i {
-	font-size: 1.4em;
-	margin-left: 6px;
-	cursor: pointer;
-	color: #bbb;
-}
-
-.task i.active {
-	color: #ff005d;
-}
 </style>

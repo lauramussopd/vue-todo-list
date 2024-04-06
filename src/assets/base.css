@@ -9,6 +9,10 @@
   --color-background: var(--vt-c-white);
   --color-text: var(--vt-c-black);
   --section-gap: 160px;
+  --primary-color: #44C9C8;
+  --dark-color: #005C63;
+  --secondary-color: #E6F4F1;
+  --light-color: #FCFCD4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +31,7 @@
 }
 
 body {
+  overflow: hidden;
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
@@ -52,3 +57,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+

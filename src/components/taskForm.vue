@@ -19,7 +19,7 @@ const handleSubmit = () => {
 
 <template>
     <form>
-        <input type="text" placeholder="I need to.." 
+        <input class="need-to" type="text" placeholder="I need to.." 
         v-model="newTask" id="">
         <button @click.prevent.stop="handleSubmit">Add</button>
     </form>
@@ -50,5 +50,7 @@ form input {
     font-size: 1em;
 }
 
-
+.need-to{
+    background-color: var(--light-color);
+}
 </style>

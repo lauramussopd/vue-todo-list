@@ -1,33 +1,42 @@
-import { supabase } from '@/api/supabase'
+import { supabase } from "@/api/supabase";
 
 export const fetchActualUser = async () => {
-  const { data } = await supabase.auth.getSession()
-  return data?.session?.user || null
-}
+  const { data } = await supabase.auth.getSession();
+  return data?.session?.user || null;
+};
 
-export const createNewUser = async (email, password) => {
-  const { data, error } = await supabase.auth.signUp({ email, password })
-
+export const createNewUser = async (email, password, name) => {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+      data: {
+        first_name: name,
+      },
+    },
+  });
   if (error) {
-    throw new Error(error.message)
+    throw new Error(error.message);
   }
 
-  return data
-}
+  return user;
+};
 
 export const logIn = async (email, password) => {
   const {
     data: { user },
-    error
-  } = await supabase.auth.signInWithPassword({ email, password })
+    error,
+  } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    throw new Error(error.message)
+    throw new Error(error.message);
   }
 
-  return user
-}
-
+  return user;
+};
 
 export const logOut = async () => {
   const { error } = await supabase.auth.signOut();
@@ -37,7 +46,7 @@ export const logOut = async () => {
   }
 
   return undefined;
-}
+};
 async function checkAuthentication() {
   try {
     const session = await supabase.auth.session();

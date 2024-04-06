@@ -43,7 +43,7 @@ const seeCurrentUser = async () => {
 
       <!--------------------------- Left Box ----------------------------->
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-        style="background: #009292;">
+        style="background: var(--dark-color);">
         <!-- <div class="featured-image mb-3">
           <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
         </div> -->
@@ -64,7 +64,7 @@ const seeCurrentUser = async () => {
           </div>
           
           <div class="input-group mb-1">
-            <input type="text" class="form-control form-control-lg bg-light fs-6"
+            <input type="text" v-model="name" class="form-control form-control-lg bg-light fs-6"
               placeholder="Name">
           </div>
           <div class="input-group mb-1">
@@ -86,12 +86,6 @@ const seeCurrentUser = async () => {
 .buttonContainer {
   display: grid;
 }
-
- button {
-  background-color: #44c9c8;
-  border: none;
-  color: #fff;
-} 
 
 /*------------ Login container ------------*/
 .box-area {

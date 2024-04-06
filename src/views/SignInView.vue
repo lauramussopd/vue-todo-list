@@ -63,10 +63,7 @@ const logout = async () => {
       <!--------------------------- Left Box ----------------------------->
 
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-        style="background: #009292;">
-        <!-- <div class="featured-image mb-3">
-          <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
-        </div> -->
+        style="background: var(--dark-color);">
         <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
         <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
       </div>
@@ -93,7 +90,7 @@ const logout = async () => {
             <button class="btn btn-lg w-100 fs-6" @click="signIn">Login</button>
           </div>
           <div class="row">
-            <small>Don't have account? <a href="/signup" @click="createAccount">Sign Up</a></small>
+            <small>Don't have account? <a href="/signup" class="a-signup" @click="createAccount">Sign Up</a></small>
           </div>
         </div>
       </div>
@@ -110,8 +107,12 @@ const logout = async () => {
   background-color: #44c9c8;
   border: none;
   color: #fff;
-} 
+}  
 
+.a-signup{
+  text-decoration: underline;
+  color: var(--dark-color);
+}
 /*------------ Login container ------------*/
 .box-area {
   width: 930px;

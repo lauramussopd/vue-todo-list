@@ -1,0 +1,25 @@
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(216, 249, 2, 0.25);
+  }
+
+  button {
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: var(--primary-color) !important;
+  } 
+
+   i {
+    font-size: 20px;
+    margin-left: 6px;
+    cursor: pointer;
+    color: #bbb;
+  }
+  
+  i.active {
+    color: var(--dark-color);
+  }
