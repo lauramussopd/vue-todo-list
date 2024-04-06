@@ -15,6 +15,7 @@ export const fetchAllTasks = async () => {
   const { data, error } = await supabase
   .from(TABLE_NAME)
   .select('*')
+  .order('inserted_at', { ascending: false });
 
   if (error) {
     throw new Error(error.message)
@@ -46,3 +47,17 @@ export const deleteTaskFromDatabase = async (id) => {
     throw new Error(error.message);
   }
 };
+
+export const updateTaskById = async (id, task) => {
+  const { data, error } = await supabase
+    .from(TABLE_NAME)
+    .update(task)
+    .eq('id', id)
+    .select();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data[0];
+}

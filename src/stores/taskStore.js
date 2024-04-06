@@ -2,17 +2,13 @@
 
 import { computed, ref } from "vue";
 import { defineStore } from "pinia";
-import { createTask, fetchAllTasks, deleteTaskFromDatabase } from "@/api/tasksApi"; //nuovo
+import { createTask, fetchAllTasks, deleteTaskFromDatabase, updateTaskById } from "@/api/tasksApi"; //nuovo
 import { TASKS_FILTER_METHODS } from '@/utils/constants';
 import { useUserStore } from "@/stores/userStore";
 
 export const useTaskStore = defineStore("taskStore", () => {
   // State
-  //   const tasks = ref([
-  //     { id: 1, title: "buy milk", isFav: false },
-  //     { id: 2, title: "buy something", isFav: false },
-  //     { id: 3, title: "baciniiii", isFav: true },
-  //   ]);
+
   const tasks = ref([]);
   const filterTaskMethod = ref(TASKS_FILTER_METHODS.ALL)
 
@@ -23,10 +19,10 @@ export const useTaskStore = defineStore("taskStore", () => {
     }
 
     if (filterTaskMethod.value === TASKS_FILTER_METHODS.FAVS) {
-      return tasks.value.filter(t => t.isFav)
+      return tasks.value.filter(t => t.is_fav)
     }
   });
-  const favCount = computed(() => tasks.value.reduce((p, c) => (c.isFav ? p + 1 : p), 0));
+  const favCount = computed(() => tasks.value.reduce((p, c) => (c.is_fav ? p + 1 : p), 0));
 
   // Actions
   async function fetchTasks() {
@@ -41,7 +37,7 @@ export const useTaskStore = defineStore("taskStore", () => {
     const userStore = useUserStore()
     try {
       const newTask = await createTask(task, userStore.user.id); // Chiama la funzione per creare la task su Supabase
-      tasks.value.push(newTask); //passa l'id dell'usuario con cui devi iniziare sessione
+      tasks.value.unshift(newTask); //passa l'id dell'usuario con cui devi iniziare sessione
     } catch (error) {
       console.error(error);
     }
@@ -57,14 +53,20 @@ export const useTaskStore = defineStore("taskStore", () => {
       // Gestione degli errori
     }
   };
-  const toggleFav = (id) => {
-    const task = tasks.value.find((t) => t.id === id);
-    task.isFav = !task.isFav;
-  };
 
   const changeFilterTaskMethod = (filterMethod) => {
     filterTaskMethod.value = filterMethod
   }
+
+  const updateTask = async (taskId, taskToUpdate) => {
+    try {
+      const updatedTask = await updateTaskById(taskId, taskToUpdate)
+      const taskIndex = tasks.value.findIndex((t) => t.id === taskId);
+      tasks.value[taskIndex] = updatedTask;
+    } catch(err) {
+      console.error(err)
+    }
+  };
 
 
   // Chiamare fetchTasks al momento dell'inizializzazione dello store
@@ -80,8 +82,8 @@ export const useTaskStore = defineStore("taskStore", () => {
     // Actions
     addTask,
     deleteTask,
-    toggleFav,
     fetchTasks,
     changeFilterTaskMethod,
+    updateTask,
   };
 });
