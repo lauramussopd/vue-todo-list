@@ -30,6 +30,10 @@
   font-weight: normal;
 }
 
+*:focus-visible {
+  outline: none;
+}
+
 body {
   overflow: hidden;
   min-height: 100vh;

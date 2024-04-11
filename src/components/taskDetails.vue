@@ -70,8 +70,10 @@ const _updateTask = async (fieldToUpdate) => {
 </template>
 
 <style scoped>
-/* task list */
-
+.btn{
+    color: #fff;
+    background-color: var(--dark-color);
+}
 
 .new-title input {
   width: 100%;

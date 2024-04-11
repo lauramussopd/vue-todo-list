@@ -1,29 +1,42 @@
 .form-control:focus {
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(216, 249, 2, 0.25);
-  }
-  .btn:hover {
-    color: #fff;
-    background-color: var(--dark-color);
-    border-color: var(--bs-btn-hover-border-color);
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  outline: none;
+  box-shadow: none;
+  border-color: #bbb;
 }
-  button {
-    background-color: var(--primary-color);
-    border: none;
-    color: #fff;
-    --bs-btn-color: #fff !important;
-    --bs-btn-bg: var(--primary-color) !important;
-  } 
 
-   i {
-    font-size: 20px;
-    margin-left: 6px;
-    cursor: pointer;
-    color: #bbb;
-  }
-  
-  i.active {
-    color: var(--dark-color);
-  }
+.btn:hover {
+  color: #fff;
+  background-color: var(--dark-color);
+  border-color: var(--bs-btn-hover-border-color);
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: var(--dark-color);
+  border: none;
+  color: #fff;
+}
+
+button {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  --bs-btn-color: #fff !important;
+  --bs-btn-bg: var(--primary-color) !important;
+}
+
+i {
+  font-size: 20px;
+  margin-left: 6px;
+  cursor: pointer;
+  color: #bbb;
+}
+
+i.active {
+  color: var(--dark-color);
+}

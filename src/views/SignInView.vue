@@ -1,20 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/userStore'
+import { useUserStore } from '@/stores/userStore';
 
+const email = ref("");
+const password = ref("");
+const name = ref("");
+const errorMessage = ref(""); 
+const successLogIn = ref(false);
+const loading = ref(false);
 
-const email = ref("")
-const password = ref("")
-const name = ref("")
-
-const userStore = useUserStore()
-const router = useRouter()
+const userStore = useUserStore();
+const router = useRouter();
 
 const createAccount = async () => {
   try {
     await userStore.createAccount(email.value, password.value, name.value);
-    // Dopo la creazione dell'account, puoi navigare alla pagina di registrazione
     router.push({ name: 'signup' });
   } catch (error) {
     console.error(error);
@@ -24,31 +25,49 @@ const createAccount = async () => {
 const signIn = async () => {
   try {
     await userStore.signIn(email.value, password.value);
-    console.log("trying login");
-    // Dopo il login, puoi navigare alla pagina "about" o fare altre azioni necessarie
-    router.push({ name: 'about' });
+
+    successLogIn.value = true;
+
+    setTimeout(() => {
+      router.push({ name: 'about' });
+      successLogIn.value = false;
+    }, 1000)
   } catch (error) {
     console.error(error);
+    errorMessage.value = "Incorrect email or password"; 
   }
 }
 
 const seeCurrentUser = async () => {
   try {
-    await userStore.seeCurrentUser()
+    await userStore.seeCurrentUser();
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
 const logout = async () => {
   try {
-    await userStore.logout()
-    console.log("logout OK")
+    await userStore.logout();
+    console.log("logout OK");
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
+
+watch(() => email.value, () => {
+  if (email.value !== '') {
+    errorMessage.value = ''
+  }
+})
+
+watch(() => password.value, () => {
+  if (password.value !== '') {
+    errorMessage.value = ''
+  }
+})
 </script>
+
 
 <template>
 
@@ -84,10 +103,16 @@ const logout = async () => {
             <input type="password" v-model="password" class="form-control form-control-lg bg-light fs-6"
               placeholder="Password">
           </div>
+          <div class="input-group mb-5">
+            <div v-if="errorMessage !== ''" class="alert alert-danger" role="alert">
+              {{ errorMessage }}
+              
+            </div>
+          </div>
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
-            <button class="btn btn-lg w-100 fs-6" @click="signIn">Login</button>
+            <button :class="`btn btn-lg w-100 fs-6 ${successLogIn ? 'success' : ''}`" :disabled="errorMessage !== ''" @click="signIn">Login</button>
           </div>
           <div class="row">
             <small>Don't have account? <a href="/signup" class="a-signup" @click="createAccount">Sign Up</a></small>
@@ -103,16 +128,25 @@ const logout = async () => {
   display: grid;
 }
 
- button {
-  background-color: #44c9c8;
+button {
+  background-color: var(--primary-color);
   border: none;
   color: #fff;
-}  
+}
+button:disabled {
+  background-color: #44c9c977;
 
-.a-signup{
+}
+
+button.success {
+  background-color: var(--dark-color);
+}
+
+.a-signup {
   text-decoration: underline;
   color: var(--dark-color);
 }
+
 /*------------ Login container ------------*/
 .box-area {
   width: 930px;
@@ -121,6 +155,12 @@ const logout = async () => {
 /*------------ Right box ------------*/
 .right-box {
   padding: 40px 30px 40px 40px;
+}
+
+.right-box .alert {
+  position: absolute;
+  top: 12px;
+  width: calc(100% - 24px);
 }
 
 /*------------ Custom Placeholder ------------*/
@@ -151,6 +191,4 @@ const logout = async () => {
     padding: 20px;
   }
 }
-
-
 </style>
