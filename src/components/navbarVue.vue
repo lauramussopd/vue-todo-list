@@ -47,7 +47,7 @@ const _handleLogOut = () => {
                         <li class="nav-item" v-if="!userStore.isAuthenticated">
                             <router-link to="/signin" class="nav-link">Sign In</router-link>
                         </li>
-                        <li class="nav-item" v-else>
+                        <li class="nav-item d-flex justify-content-center align-items-center" v-else>
                             <button @click="_handleLogOut" class="nav-link">Log Out</button>
                         </li>
                     </ul>
@@ -68,11 +68,14 @@ nav {
     color: #fff;
 }
 
-
 .nav-link,
 .navbar-brand {
     color: #fff;
     text-align: center;
+}
+
+.nav-link * {
+    width: 100%;
 }
 
 .navbar {
@@ -81,15 +84,16 @@ nav {
     color: #fff;
 }
 
-.navbar-toggler-icon{
-color: #fff;
+.navbar-toggler {
+    border: none;
+}
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none; 
 }
 
-/* nav a.router-link-exact-active {
-	color: var(--color-text);
-} */
-
-/* nav a.router-link-exact-active:hover {
-	background-color: transparent;
-} */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='1' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 </style>
