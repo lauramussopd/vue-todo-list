@@ -29,7 +29,7 @@ const signIn = async () => {
     successLogIn.value = true;
 
     setTimeout(() => {
-      router.push({ name: 'about' });
+      router.push({ name: 'tasks' });
       successLogIn.value = false;
     }, 1000)
   } catch (error) {

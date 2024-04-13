@@ -30,7 +30,7 @@ const setFilter = (selectedFilter) => {
 		<div class="input-group mb-5 d-flex justify-content-between">
 		</div>
 		<div class="input-group mb-3">
-			<div class="task-list-about" v-if="tasksFiltered.length">
+			<div class="task-list-tasks" v-if="tasksFiltered.length">
 				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
 				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
@@ -68,7 +68,7 @@ button {
 
 /* task list */
 
-.task-list-about {
+.task-list-tasks {
 	max-width: 400px;
     margin: 20px auto;
     width: 400px;

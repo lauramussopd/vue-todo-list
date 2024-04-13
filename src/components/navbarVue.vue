@@ -42,7 +42,7 @@ const _handleLogOut = () => {
                             <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
                         </li> -->
                         <li class="nav-item">
-                            <router-link to="/about" class="nav-link">Tasks</router-link>
+                            <router-link to="/tasks" class="nav-link">Tasks</router-link>
                         </li>
                         <li class="nav-item" v-if="!userStore.isAuthenticated">
                             <router-link to="/signin" class="nav-link">Sign In</router-link>

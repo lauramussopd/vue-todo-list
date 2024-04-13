@@ -22,9 +22,9 @@ const router = createRouter({
       component: () => import('@/views/SignInView.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('@/views/AboutView.vue')
+      path: '/tasks',
+      name: 'tasks',
+      component: () => import('@/views/TasksView.vue')
     },
     {
       path: '/signup',
@@ -54,7 +54,7 @@ router.beforeEach(async (to, from, next) => {
     next({ name: 'signin' })
   } else if (to.name === 'signin' && userStore.user) {
     console.log("test2")
-    next({ name: 'about' })
+    next({ name: 'tasks' })
   } else {
     next()
   }

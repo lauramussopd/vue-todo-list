@@ -14,7 +14,7 @@ const router = useRouter()
 const createAccount = async () => {
   try {
     await userStore.createAccount(email.value, password.value, name.value);
-    router.push({ name: 'about' });
+    router.push({ name: '' });
   } catch (error) {
     console.error(error)
   }

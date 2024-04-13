@@ -1,120 +1,120 @@
-<!--  
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  
-  const textElement = ref(null);
-  const text = "Starting...";
-  let currentIndex = 0;
-  
-  const displayText = ref("");
-  
-  const typeText = () => {
-	if (currentIndex < text.length) {
-	  displayText.value += text[currentIndex];
-	  currentIndex++;
-	  setTimeout(typeText, 100); // Aggiungi il ritardo tra ogni lettera
-	}
-  }
-  
-  onMounted(() => {
-	typeText(); // Avvia la funzione per scrivere la lettera alla volta quando il componente viene montato
-  });
-  </script>
-  
-  <template>
-	<main class="main-home d-flex justify-content-center align-items-center">
-	  <h1 ref="textElement">{{ displayText }}</h1>
-	</main>
-  </template>
+ <template>
 
-  <style scoped>
-  .main-home {
-	background-color: var(--light-color);
-	height: 100vh;
-	color: var(--primary-color);
-  }
-  </style>
-  <template>
-  <main class="main-home d-flex justify-content-center align-items-center">
-    <h1 ref="textElement">Starting...</h1>
-  </main>
-</template>
 
-<script>
-import { ref, onMounted } from 'vue'
+	<div class="ellipses-container">
 
-export default {
-  setup() {
-    const textElement = ref(null);
-    const text = "Starting...";
-    let idx = 0;
+		<h2 class="greeting">Welcome</h2>
 
-    const writeText = () => {
-      textElement.value.innerHTML = text.slice(0, idx); // Aggiorna il contenuto dell'elemento con il testo fino all'indice corrente
+		<div class="ellipses ellipses__outer--thin">
 
-      idx++; // Incrementa l'indice per il prossimo carattere
+			<div class="ellipses ellipses__orbit"></div>
 
-      if (idx <= text.length) { // Se non abbiamo ancora scritto tutto il testo
-        setTimeout(writeText, 100); // Richiama la funzione dopo 100 millisecondi per scrivere il prossimo carattere
-      } else {
-        idx = 1; // Resetta l'indice per ricominciare a scrivere il testo
-      }
-    };
+		</div>
 
-    onMounted(() => {
-      writeText(); // Avvia la funzione per scrivere il testo alla volta quando il componente viene montato
-    });
+		<div class="ellipses ellipses__outer--thick"></div>
+	</div>
 
-    return {};
-  }
-}
-</script>
+
+
+</template> 
+
 
 <style scoped>
-.main-home {
-  background-color: var(--light-color);
-  height: 100vh;
-  color: var(--primary-color);
+.greeting {
+	position: absolute;
+	top: 50%;
+	left: 55%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 4rem;
+	font-size: 2.2rem;
+	font-weight: 400;
+	opacity: 0.5;
 }
-</style> -->
 
-<template>
-	<main class="main-home d-flex justify-content-center align-items-center">
-	  <h1 ref="textElement">Starting...</h1>
-	</main>
-  </template>
-  
-  <script>
-  import { ref, onMounted } from 'vue'
-  
-  export default {
-	setup() {
-	  const textElement = ref(null);
-	  const text = "Starting...";
-	  let currentIndex = 0;
-  
-	  const writeText = () => {
-		if (currentIndex < text.length) {
-		  textElement.value.textContent += text[currentIndex];
-		  currentIndex++;
-		  setTimeout(writeText, 100);
-		}
-	  };
-  
-	  onMounted(() => {
-		writeText();
-	  });
-  
-	  return {};
-	}
-  }
-  </script>
-  
-  <style scoped>
-  .main-home {
-	background-color: var(--light-color);
-	height: 100vh;
+.ellipses-container {
+	width: 50rem;
+	height: 50rem;
+	border-radius: 50%;
+	margin: 0 auto;
+	position: relative;
+	top: 10.5rem;
+
+}
+
+.ellipses {
+	position: absolute;
+	top: 0;
+	border-style: solid;
+}
+
+.ellipses__outer--thin {
+	width: 100%;
+	height: 100%;
+	border-width: 0px;
+	animation: ellipsesOrbit 15s ease-in-out infinite;
+
+}
+
+.ellipses__outer--thick {
+	width: 99.5%;
+	height: 99.5%;
+	border-width: 3px;
+	transform: rotate(-45deg);
+	animation: ellipsesRotate 15s ease-in-out infinite;
 	color: var(--primary-color);
-  }
-  </style>
-  
+}
+
+.ellipses__orbit {
+	width: 3rem;
+	height: 3rem;
+	border-width: 3px;
+	color: var(--primary-color);
+	background-color: var(--primary-color);
+	top: 5rem;
+	right: 6.75rem;
+	animation: ellipsesOrbit 15s ease-in-out infinite;
+
+}
+
+
+
+@keyframes ellipsesRotate {
+	0% {
+		transform: rotate(-45deg);
+	}
+
+	100% {
+		transform: rotate(-405deg);
+	}
+}
+
+@keyframes ellipsesOrbit {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Media query per schermi più piccoli */
+@media screen and (max-width: 768px) {
+	.ellipses-container {
+		width: 90%;
+		height: auto;
+		top: 5rem;
+	}
+	.ellipses__outer--thick{
+		border-width: 2px;
+	}
+	.greeting {
+		font-size: 1.5rem;
+		letter-spacing: 2rem;
+	}
+}
+</style> 
+
+
