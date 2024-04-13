@@ -30,7 +30,8 @@ const _handleLogOut = () => {
     <header>
         <nav class="navbar navbar-expand-sm">
             <div class="container-fluid">
-                <router-link to="/" class="navbar-brand">To do list</router-link>
+                <router-link to="" class="navbar-brand">To do list</router-link>
+                <!-- <router-link to="/" class="navbar-brand">To do list</router-link> -->
                 <button class="navbar-toggler" type="button" @click="toggleNavbar" aria-controls="navbarsExample05"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,7 +43,7 @@ const _handleLogOut = () => {
                             <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
                         </li> -->
                         <li class="nav-item">
-                            <router-link to="/tasks" class="nav-link">Tasks</router-link>
+                            <router-link to="/signin" class="nav-link">Tasks</router-link>
                         </li>
                         <li class="nav-item" v-if="!userStore.isAuthenticated">
                             <router-link to="/signin" class="nav-link">Sign In</router-link>

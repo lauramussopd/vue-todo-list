@@ -78,13 +78,9 @@ const _updateTask = async (fieldToUpdate) => {
 .new-title input {
   width: 100%;
   border: 0.5px solid lightgray;
-  /* Imposta uno spessore di 1 pixel e il colore grigio chiaro */
   border-radius: 3px;
-  /* Aggiunge un piccolo arrotondamento ai bordi */
   padding: 3px;
-  /* Aggiunge spazio interno per una migliore presentazione */
   outline: none;
-  /* Rimuove l'outline predeterminato sul focus */
 }
 
 .task {

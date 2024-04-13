@@ -6,6 +6,8 @@ import taskDetails from '@/components/taskDetails.vue';
 import taskForm from '@/components/taskForm.vue';
 import { TASKS_FILTER_METHODS } from '@/utils/constants'
 
+import navbarVue from '@/components/navbarVue.vue';
+
 const taskStore = useTaskStore();
 const { tasksFiltered } = storeToRefs(taskStore);
 
@@ -16,6 +18,8 @@ const setFilter = (selectedFilter) => {
 </script>
 
 <template>
+
+	<navbarVue />
 	<div class="row align-items-center">
 
 		<nav class="filter mb-4">
@@ -70,13 +74,11 @@ button {
 
 .task-list-tasks {
 	max-width: 400px;
-    margin: 20px auto;
-    width: 400px;
+	margin: 20px auto;
+	width: 400px;
 	padding: 20px;
-    background-color: rgba(252, 252, 212, 0.5); 
-    border-radius: 5px;
-    box-shadow: 3px 3px 21px #DDD;
-} 
-
-
+	background-color: rgba(252, 252, 212, 0.5);
+	border-radius: 5px;
+	box-shadow: 3px 3px 21px #DDD;
+}
 </style>

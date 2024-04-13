@@ -4,14 +4,14 @@
 	<div class="ellipses-container">
 
 		<h2 class="greeting">Welcome</h2>
-		<a href="../views/SignInView.vue" class="btn button">Enter</a>
-
-		<div class="ellipses ellipses__outer--thin">
-
-			<div class="ellipses ellipses__orbit"></div>
-
+		<div class="btn-container">
+			<a href="../signin" class="btn button">Sign In</a>
+			<a href="/signup" class="btn button">Sign Up</a>
 		</div>
 
+		<div class="ellipses ellipses__outer--thin">
+			<div class="ellipses ellipses__orbit"></div>
+		</div>
 		<div class="ellipses ellipses__outer--thick"></div>
 	</div>
 
@@ -34,15 +34,31 @@
 	opacity: 0.5;
 }
 
-.btn {
+.btn-container {
 	position: absolute;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: 70%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	transform: translateY(-50%);
+}
+
+.btn {
+
+	position: relative; 
+    z-index: 999;
 	background-color: var(--primary-color);
 	border: none;
 	color: #fff;
 	cursor: pointer;
+}
+
+.btn:first-child {
+	left: 40%;
+}
+
+.btn:last-child {
+	left: 60%;
 }
 
 
@@ -67,7 +83,7 @@
 	width: 100%;
 	height: 100%;
 	border-width: 0px;
-	animation: ellipsesOrbit 15s ease-in-out infinite;
+	animation: ellipsesOrbit 15s linear infinite;
 
 }
 
@@ -76,7 +92,7 @@
 	height: 99.5%;
 	border-width: 3px;
 	transform: rotate(-45deg);
-	animation: ellipsesRotate 15s ease-in-out infinite;
+	animation: ellipsesRotate 15s linear infinite;
 	color: var(--primary-color);
 }
 
@@ -88,7 +104,7 @@
 	background-color: var(--primary-color);
 	top: 5rem;
 	right: 6.75rem;
-	animation: ellipsesOrbit 15s ease-in-out infinite;
+	animation: ellipsesOrbit 15s linear infinite;
 
 }
 

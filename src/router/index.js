@@ -43,25 +43,26 @@ async function getUser() {
 }
 
 
+
+
+
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
 
   if (userStore.user === undefined) {
     await userStore.fetchUser()
   }
-  if (userStore.user === null && to.name !== 'signin' && to.name !== 'signup') {
-    console.log("test1")
-    next({ name: 'signin' })
+
+  if (userStore.user === null && to.name === 'tasks') {
+    console.log("Utente non autenticato. Reindirizzo a /home.")
+    next({ name: 'home' }) // Reindirizza alla pagina /home se l'utente non è autenticato e sta cercando di accedere a una pagina diversa da signin e signup
   } else if (to.name === 'signin' && userStore.user) {
-    console.log("test2")
-    next({ name: 'tasks' })
+    console.log("L'utente è già autenticato. Reindirizzo a /tasks.")
+    next({ name: 'tasks' }) // Reindirizza all'utente già autenticato alla pagina delle attività quando cerca di accedere alla pagina di accesso
   } else {
     next()
   }
 })
-
-
-
 
 export default router;
 

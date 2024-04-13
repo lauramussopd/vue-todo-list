@@ -3,6 +3,8 @@ import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/userStore';
 
+import navbarVue from '@/components/navbarVue.vue';
+
 const email = ref("");
 const password = ref("");
 const name = ref("");
@@ -70,7 +72,8 @@ watch(() => password.value, () => {
 
 
 <template>
-
+  
+<navbarVue />
   <!----------------------- Main Container -------------------------->
 
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
