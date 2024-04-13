@@ -1,9 +1,10 @@
- <template>
+<template>
 
 
 	<div class="ellipses-container">
 
 		<h2 class="greeting">Welcome</h2>
+		<a href="../views/SignInView.vue" class="btn button">Enter</a>
 
 		<div class="ellipses ellipses__outer--thin">
 
@@ -16,7 +17,7 @@
 
 
 
-</template> 
+</template>
 
 
 <style scoped>
@@ -32,6 +33,19 @@
 	font-weight: 400;
 	opacity: 0.5;
 }
+
+.btn {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--primary-color);
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+
 
 .ellipses-container {
 	width: 50rem;
@@ -107,14 +121,14 @@
 		height: auto;
 		top: 5rem;
 	}
-	.ellipses__outer--thick{
+
+	.ellipses__outer--thick {
 		border-width: 2px;
 	}
+
 	.greeting {
 		font-size: 1.5rem;
 		letter-spacing: 2rem;
 	}
 }
-</style> 
-
-
+</style>
