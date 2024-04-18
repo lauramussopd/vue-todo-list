@@ -31,7 +31,6 @@ const _handleLogOut = () => {
         <nav class="navbar navbar-expand-sm">
             <div class="container-fluid">
                 <router-link to="" class="navbar-brand">To do list</router-link>
-                <!-- <router-link to="/" class="navbar-brand">To do list</router-link> -->
                 <button class="navbar-toggler" type="button" @click="toggleNavbar" aria-controls="navbarsExample05"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

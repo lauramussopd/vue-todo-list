@@ -2,17 +2,19 @@
 
 
 	<div class="ellipses-container">
-
-		<h2 class="greeting">Welcome</h2>
-		<div class="btn-container">
-			<a href="../signin" class="btn button">Sign In</a>
-			<a href="/signup" class="btn button">Sign Up</a>
+		<div class="elipse-content">
+			<h2 class="greeting">Welcome</h2>
+			<div class="btn-container">
+				<a href="../signin" class="btn button">Sign In</a>
+				<a href="/signup" class="btn button">Sign Up</a>
+			</div>
+			<div class="elipse-animation">
+				<div class="ellipses ellipses__outer--thin">
+					<div class="ellipses ellipses__orbit"></div>
+				</div>
+				<div class="ellipses ellipses__outer--thick"></div>
+			</div>
 		</div>
-
-		<div class="ellipses ellipses__outer--thin">
-			<div class="ellipses ellipses__orbit"></div>
-		</div>
-		<div class="ellipses ellipses__outer--thick"></div>
 	</div>
 
 
@@ -45,7 +47,7 @@
 }
 
 .btn {
-    z-index: 999;
+	z-index: 999;
 	background-color: var(--primary-color);
 	border: none;
 	color: #fff;
@@ -62,7 +64,6 @@
 	border-radius: 50%;
 	margin: 0 auto;
 	position: relative;
-	top: 10.5rem;
 
 }
 
@@ -76,7 +77,7 @@
 	width: 100%;
 	height: 100%;
 	border-width: 0px;
-	animation: ellipsesOrbit 15s linear infinite;
+	animation: ellipsesOrbit 20s linear infinite;
 
 }
 
@@ -85,7 +86,7 @@
 	height: 99.5%;
 	border-width: 3px;
 	transform: rotate(-45deg);
-	animation: ellipsesRotate 15s linear infinite;
+	animation: ellipsesRotate 20s linear infinite;
 	color: var(--primary-color);
 }
 
@@ -126,29 +127,12 @@
 /* Media query per schermi più piccoli */
 @media screen and (max-width: 768px) {
 	.ellipses-container {
-		width: 90%;
-		height: auto;
-		top: 5rem;
-	}
-
-
-	.ellipses__outer--thick {
-		border-width: 2px;
+		transform: scale(0.5);
 	}
 
 	.greeting {
 		font-size: 1.5rem;
 		letter-spacing: 2rem;
 	}
-
-.btn-container {
-	position: absolute;
-	top: 55%;
-	width: 100%;
-	z-index: 999;
-	display: flex;
-	justify-content: center;
-
-}
 }
 </style>

@@ -8,16 +8,20 @@ import navbarVue from '@/components/navbarVue.vue';
 const email = ref("")
 const password = ref("")
 const name = ref("")
+const buttonOff = ref(false)
 
 const userStore = useUserStore()
 const router = useRouter()
 
 const createAccount = async () => {
   try {
+    buttonOff.value = true;
     await userStore.createAccount(email.value, password.value, name.value);
-    router.push({ name: '' });
+    buttonOff.value = false;
+    router.push({ name: 'tasks' });
   } catch (error) {
     console.error(error)
+    buttonOff.value = false;
   }
 }
 
@@ -75,7 +79,7 @@ const seeCurrentUser = async () => {
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
-            <button class="btn btn-lg w-100 fs-6" @click="createAccount">Create account</button>
+            <button class="btn btn-lg w-100 fs-6" :disabled="buttonOff" @click="createAccount">Create account</button>
           </div>
         </div>
       </div>
