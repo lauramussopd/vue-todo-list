@@ -25,6 +25,7 @@ const setFilter = (selectedFilter) => {
 		<nav class="filter mb-4">
 			<button @click="setFilter(TASKS_FILTER_METHODS.ALL)">All tasks</button>
 			<button @click="setFilter(TASKS_FILTER_METHODS.FAVS)">Fav tasks</button>
+			<button @click="setFilter(TASKS_FILTER_METHODS.COMPLETE)">Completed tasks</button>
 		</nav>
 		<div class="header-text mb-4">
 		</div>
@@ -34,12 +35,13 @@ const setFilter = (selectedFilter) => {
 		<div class="input-group mb-5 d-flex justify-content-between">
 		</div>
 		<div class="input-group mb-3">
-			<div class="task-list-tasks" v-if="tasksFiltered.length">
+			 <div class="task-list-tasks" v-if="tasksFiltered.length">
 				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
 				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
 				</div>
-			</div>
+			</div> 
+		
 		</div>
 	</div>
 
@@ -59,7 +61,6 @@ button {
 	border-radius: 4px;
 	padding: 4px 8px;
 	cursor: pointer;
-	font-size: 0.8em;
 }
 
 /* filter nav */

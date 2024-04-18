@@ -1,6 +1,7 @@
 export const TASKS_FILTER_METHODS = {
     ALL: 'all',
-    FAVS: 'favs'
+    FAVS: 'favs',
+    COMPLETE: 'completed'
 }
 
 export const ROUTES = {

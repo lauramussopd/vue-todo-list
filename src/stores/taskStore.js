@@ -21,14 +21,20 @@ export const useTaskStore = defineStore("taskStore", () => {
     if (filterTaskMethod.value === TASKS_FILTER_METHODS.FAVS) {
       return tasks.value.filter(t => t.is_fav)
     }
+    if (filterTaskMethod.value === TASKS_FILTER_METHODS.COMPLETE) {
+      return tasks.value.filter(t => t.is_complete)
+    }
   });
   const favCount = computed(() => tasks.value.reduce((p, c) => (c.is_fav ? p + 1 : p), 0));
+
+
+  const completeCount = computed(() => tasks.value.reduce((p, c) => (c.is_complete ? p + 1 : p), 0));
 
   // Actions
   async function fetchTasks() {
     try {
-      const data = await fetchAllTasks(); // Chiama la funzione per recuperare le task da Supabase
-      tasks.value = data; // Aggiorna le task nel tuo store con i dati recuperati da Supabase
+      const data = await fetchAllTasks(); 
+      tasks.value = data; 
     } catch (error) {
       console.error(error);
     }
@@ -36,8 +42,8 @@ export const useTaskStore = defineStore("taskStore", () => {
   const addTask = async (task) => {
     const userStore = useUserStore()
     try {
-      const newTask = await createTask(task, userStore.user.id); // Chiama la funzione per creare la task su Supabase
-      tasks.value.unshift(newTask); //passa l'id dell'usuario con cui devi iniziare sessione
+      const newTask = await createTask(task, userStore.user.id); 
+      tasks.value.unshift(newTask); 
     } catch (error) {
       console.error(error);
     }
@@ -46,11 +52,11 @@ export const useTaskStore = defineStore("taskStore", () => {
 
   const deleteTask = async (id) => {
     try {
-      await deleteTaskFromDatabase(id); // Chiamiamo la nuova funzione deleteTask per eliminare la task dal database
-      tasks.value = tasks.value.filter((t) => t.id !== id); // Aggiorniamo lo stato locale rimuovendo la task
+      await deleteTaskFromDatabase(id); 
+      tasks.value = tasks.value.filter((t) => t.id !== id); 
     } catch (error) {
       console.error("Errore ", error);
-      // Gestione degli errori
+
     }
   };
 
@@ -79,6 +85,7 @@ export const useTaskStore = defineStore("taskStore", () => {
     // Getters
     tasksFiltered,
     favCount,
+    completeCount,
     // Actions
     addTask,
     deleteTask,

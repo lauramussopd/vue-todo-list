@@ -13,7 +13,7 @@ const taskStore = useTaskStore();
 
 const newTaskTitle = ref('')
 const _isEditing = ref(false)
-// const taskStatus = computed(() => `check_box${props.task.is_complete ? '' : '_outline_blank'}`)
+
 
 const deleteTask = (taskId) => {
   taskStore.deleteTask(taskId);

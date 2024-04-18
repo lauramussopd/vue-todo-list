@@ -45,7 +45,6 @@ form input {
     border: 0;
     padding: 10px;
     border-radius: 6px;
-    color:  #44c9c8;
     font-size: 1em;
 }
 

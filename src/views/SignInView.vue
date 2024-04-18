@@ -8,7 +8,7 @@ import navbarVue from '@/components/navbarVue.vue';
 const email = ref("");
 const password = ref("");
 const name = ref("");
-const errorMessage = ref(""); 
+const errorMessage = ref("");
 const successLogIn = ref(false);
 const loading = ref(false);
 
@@ -24,8 +24,16 @@ const createAccount = async () => {
   }
 }
 
+//const showSpinner(){
+//let
+// declare the container where to inject the HTML
+// declare the html to inject ( spinner)
+// inject html
+//}
+
 const signIn = async () => {
   try {
+    // showSpinner();
     await userStore.signIn(email.value, password.value);
 
     successLogIn.value = true;
@@ -33,10 +41,10 @@ const signIn = async () => {
     setTimeout(() => {
       router.push({ name: 'tasks' });
       successLogIn.value = false;
-    }, 1000)
+    }, 100)
   } catch (error) {
     console.error(error);
-    errorMessage.value = "Incorrect email or password"; 
+    errorMessage.value = "Incorrect email or password";
   }
 }
 
@@ -72,8 +80,8 @@ watch(() => password.value, () => {
 
 
 <template>
-  
-<navbarVue />
+
+  <navbarVue />
   <!----------------------- Main Container -------------------------->
 
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -109,16 +117,20 @@ watch(() => password.value, () => {
           <div class="input-group mb-5">
             <div v-if="errorMessage !== ''" class="alert alert-danger" role="alert">
               {{ errorMessage }}
-              
+
             </div>
           </div>
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
-            <button :class="`btn btn-lg w-100 fs-6 ${successLogIn ? 'success' : ''}`" :disabled="errorMessage !== ''" @click="signIn">Login</button>
+            
+            <button :class="`btn btn-lg w-100 fs-6 ${successLogIn ? 'success' : ''}`" :disabled="errorMessage !== ''"
+              @click="signIn">Login </button>
           </div>
           <div class="row">
-            <small>Don't have account? <a href="/signup" class="a-signup" @click="createAccount">Sign Up</a></small>
+            <small>Don't have account? <a href="/signup" class="a-signup" @click="createAccount">Sign Up </a></small>
+
+
           </div>
         </div>
       </div>
@@ -136,6 +148,7 @@ button {
   border: none;
   color: #fff;
 }
+
 button:disabled {
   background-color: #44c9c977;
 
@@ -162,8 +175,11 @@ button.success {
 
 .right-box .alert {
   position: absolute;
-  top: 12px;
-  width: calc(100% - 24px);
+    top: 39px;
+    height: 44px;
+    text-align: center;
+    padding: 10px 12px;
+    width: calc(100% - 24px);
 }
 
 /*------------ Custom Placeholder ------------*/

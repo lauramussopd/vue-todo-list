@@ -55,7 +55,7 @@ router.beforeEach(async (to, from, next) => {
 
   if (userStore.user === null && to.name === 'tasks') {
     console.log("Utente non autenticato. Reindirizzo a /home.")
-    next({ name: 'home' }) // Reindirizza alla pagina /home se l'utente non è autenticato e sta cercando di accedere a una pagina diversa da signin e signup
+    next({ name: 'home' }) 
   } else if (to.name === 'signin' && userStore.user) {
     console.log("L'utente è già autenticato. Reindirizzo a /tasks.")
     next({ name: 'tasks' }) // Reindirizza all'utente già autenticato alla pagina delle attività quando cerca di accedere alla pagina di accesso

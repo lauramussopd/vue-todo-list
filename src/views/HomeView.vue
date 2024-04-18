@@ -36,30 +36,23 @@
 
 .btn-container {
 	position: absolute;
-	top: 70%;
+	top: 55%;
 	width: 100%;
+	z-index: 999;
 	display: flex;
 	justify-content: center;
-	transform: translateY(-50%);
+
 }
 
 .btn {
-
-	position: relative; 
     z-index: 999;
 	background-color: var(--primary-color);
 	border: none;
 	color: #fff;
 	cursor: pointer;
+	margin: 20px;
 }
 
-.btn:first-child {
-	left: 40%;
-}
-
-.btn:last-child {
-	left: 60%;
-}
 
 
 
@@ -138,6 +131,7 @@
 		top: 5rem;
 	}
 
+
 	.ellipses__outer--thick {
 		border-width: 2px;
 	}
@@ -146,5 +140,15 @@
 		font-size: 1.5rem;
 		letter-spacing: 2rem;
 	}
+
+.btn-container {
+	position: absolute;
+	top: 55%;
+	width: 100%;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+
+}
 }
 </style>
