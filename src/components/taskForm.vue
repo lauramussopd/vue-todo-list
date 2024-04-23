@@ -51,4 +51,10 @@ form input {
 .need-to{
     background-color: var(--light-color);
 }
+
+button:hover {
+  color: #fff;
+  background-color: var(--dark-color);
+  border-color: var(--bs-btn-hover-border-color);
+}
 </style>

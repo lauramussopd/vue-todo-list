@@ -82,4 +82,11 @@ button {
 	border-radius: 5px;
 	box-shadow: 3px 3px 21px #DDD;
 }
+
+button:hover {
+  color: #fff;
+  background-color: var(--dark-color);
+  border-color: var(--bs-btn-hover-border-color);
+}
+
 </style>
