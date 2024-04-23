@@ -57,32 +57,32 @@ const seeCurrentUser = async () => {
       </div>
       <!-------------------- ------ Right Box ---------------------------->
 
-      <div class="col-md-6 right-box">
+      <form class="col-md-6 right-box" @submit.prevent="createAccount">
         <div class="row align-items-center">
           <div class="header-text mb-4">
             <h2>Welcome!</h2>
             <p>Let’s begin the adventure</p>
           </div>
-          <div class="input-group mb-1">
-            <input type="text" v-model="email" class="form-control form-control-lg bg-light fs-6"
-              placeholder="Email address" />
+            <div class="input-group mb-1">
+            <input type="email" v-model="email" class="form-control form-control-lg bg-light fs-6"
+              placeholder="Email address" required/>
           </div>
-          
           <div class="input-group mb-1">
             <input type="text" v-model="name" class="form-control form-control-lg bg-light fs-6"
-              placeholder="Name">
+              placeholder="Name" required>
           </div>
           <div class="input-group mb-1">
             <input type="password" v-model="password" class="form-control form-control-lg bg-light fs-6"
-              placeholder="Password">
+              placeholder="Password" required>
           </div>
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
-            <button class="btn btn-lg w-100 fs-6" :disabled="buttonOff" @click="createAccount">Create account</button>
+            <button type="submit" class="btn btn-lg w-100 fs-6" :disabled="buttonOff" >Create account</button>
           </div>
+          
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template> 

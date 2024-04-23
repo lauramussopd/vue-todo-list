@@ -70,6 +70,7 @@ const _updateTask = async (fieldToUpdate) => {
 </template>
 
 <style scoped>
+
 .btn{
     color: #fff;
     background-color: var(--dark-color);
@@ -96,6 +97,10 @@ const _updateTask = async (fieldToUpdate) => {
   justify-content: space-between;
   align-items: center;
 }
+.task-content h6{
+  max-width: 150px !important;
+}
+
 
 .task .icon {
   text-align: right;

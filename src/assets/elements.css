@@ -60,3 +60,18 @@ nav {
   nav a.router-link-exact-active:hover {
 	background-color: transparent;
   }
+
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 0;
+    align-items: center;
+}
+
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}

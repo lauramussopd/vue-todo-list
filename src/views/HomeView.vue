@@ -124,15 +124,25 @@
 	}
 }
 
-/* Media query per schermi più piccoli */
-@media screen and (max-width: 768px) {
-	.ellipses-container {
-		transform: scale(0.5);
-	}
 
-	.greeting {
-		font-size: 1.5rem;
-		letter-spacing: 2rem;
-	}
+ @media screen and (max-width: 768px) {
+
+.ellipses-container{
+	width: auto;
+    height: 50rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
 }
+    .elipse-animation {
+        display: none; 
+    }
+
+    .greeting {
+        font-size: 1.5rem;
+        letter-spacing: 2rem;
+    }
+
+} 
+
 </style>

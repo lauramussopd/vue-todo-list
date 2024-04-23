@@ -24,8 +24,8 @@ const setFilter = (selectedFilter) => {
 
 		<nav class="filter mb-4">
 			<button @click="setFilter(TASKS_FILTER_METHODS.ALL)">All tasks</button>
-			<button @click="setFilter(TASKS_FILTER_METHODS.FAVS)">Fav tasks</button>
-			<button @click="setFilter(TASKS_FILTER_METHODS.COMPLETE)">Completed tasks</button>
+			<button @click="setFilter(TASKS_FILTER_METHODS.FAVS)">Favourites</button>
+			<button @click="setFilter(TASKS_FILTER_METHODS.COMPLETE)">Completed</button>
 		</nav>
 		<div class="header-text mb-4">
 		</div>
