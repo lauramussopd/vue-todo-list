@@ -128,7 +128,8 @@ watch(() => password.value, () => {
               @click="signIn">Login </button>
           </div>
           <div class="row">
-            <small>Don't have account? <a href="/signup" class="a-signup" @click="createAccount">Sign Up </a></small>
+            <small>Don't have account? <router-link to="/signup" class="a-signup">Sign Up</router-link>
+              </small>
 
 
           </div>

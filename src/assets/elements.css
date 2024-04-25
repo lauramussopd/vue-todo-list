@@ -12,6 +12,14 @@
   border-color: var(--bs-btn-hover-border-color);
 }
 
+.btn:focus-visible {
+  color: #fff; 
+  background-color: var(--dark-color);
+  border-color: var(--bs-btn-hover-border-color);
+  outline: 0;
+  box-shadow: var(--bs-btn-focus-box-shadow);
+}
+
 .btn-check:checked + .btn,
 .btn.active,
 .btn.show,
@@ -75,3 +83,4 @@ nav {
   flex-wrap: wrap;
   margin: 0;
 }
+

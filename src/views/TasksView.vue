@@ -5,6 +5,7 @@ import { useTaskStore } from '@/stores/taskStore';
 import taskDetails from '@/components/taskDetails.vue';
 import taskForm from '@/components/taskForm.vue';
 import { TASKS_FILTER_METHODS } from '@/utils/constants'
+import Swal from 'sweetalert2';
 
 import navbarVue from '@/components/navbarVue.vue';
 
@@ -15,6 +16,12 @@ const setFilter = (selectedFilter) => {
 	taskStore.changeFilterTaskMethod(selectedFilter)
 	console.log(tasksFiltered.value)
 };
+
+const addTask = async (task) => {
+    await taskStore.addTask(task);
+    Swal.fire('Task Added!', 'Your task has been successfully added.', 'success');
+};
+
 </script>
 
 <template>

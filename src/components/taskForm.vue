@@ -3,15 +3,30 @@
 <script setup>
 import { ref } from 'vue';
 import { useTaskStore } from '../stores/taskStore';
+import Swal from 'sweetalert2';
 
 const taskStore = useTaskStore();
 const newTask = ref('');
+// const handleSubmit = () => {
+//     if (newTask.value.length > 0) {
+//         taskStore.addTask({
+//             title: newTask.value,
+//         });
+//         newTask.value = '';
+//     }
+// };
+
 const handleSubmit = () => {
     if (newTask.value.length > 0) {
         taskStore.addTask({
             title: newTask.value,
+        }).then(() => {
+            Swal.fire('Task Added!', 'Your task has been successfully added.', 'success');
+            newTask.value = '';
+        }).catch(error => {
+            Swal.fire('Error!', 'There was an error adding the task.', 'error');
+            console.error('Error adding task:', error);
         });
-        newTask.value = '';
     }
 };
 </script>

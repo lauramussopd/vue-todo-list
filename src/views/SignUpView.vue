@@ -3,12 +3,14 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/userStore'
 
+
 import navbarVue from '@/components/navbarVue.vue';
 
 const email = ref("")
 const password = ref("")
 const name = ref("")
 const buttonOff = ref(false)
+const errorMessage = ref("");
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -16,11 +18,16 @@ const router = useRouter()
 const createAccount = async () => {
   try {
     buttonOff.value = true;
+    if (password.value.length < 6) {
+      errorMessage.value = "Password must be at least 6 characters long.";
+      throw new Error("Password too short");
+    }
     await userStore.createAccount(email.value, password.value, name.value);
     buttonOff.value = false;
     router.push({ name: 'tasks' });
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    errorMessage.value = error.message;
     buttonOff.value = false;
   }
 }
@@ -49,9 +56,6 @@ const seeCurrentUser = async () => {
       <!--------------------------- Left Box ----------------------------->
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
         style="background: var(--dark-color);">
-        <!-- <div class="featured-image mb-3">
-          <img src="../assets/bg.jpg" class="img-fluid" style="width: 250px;">
-        </div> -->
         <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
         <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
       </div>
@@ -78,6 +82,9 @@ const seeCurrentUser = async () => {
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
           <div class="input-group mb-3">
+            <div v-if="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+          </div>
+          <div class="input-group mb-3">
             <button type="submit" class="btn btn-lg w-100 fs-6" :disabled="buttonOff" >Create account</button>
           </div>
           
@@ -92,17 +99,14 @@ const seeCurrentUser = async () => {
   display: grid;
 }
 
-/*------------ Login container ------------*/
 .box-area {
   width: 930px;
 }
 
-/*------------ Right box ------------*/
 .right-box {
   padding: 40px 30px 40px 40px;
 }
 
-/*------------ Custom Placeholder ------------*/
 ::placeholder {
   font-size: 16px;
 }
@@ -113,6 +117,30 @@ const seeCurrentUser = async () => {
 
 .rounded-5 {
   border-radius: 30px;
+}
+/* alert message */
+
+.swal2-popup [aria-label="Confirm"] {
+  background-color: #4CAF50; /* Esempio di colore del pulsante "OK" verde */
+  color: #fff; /* Testo bianco */
+  padding: 10px 20px; /* Padding per spaziatura */
+  border-radius: 5px; /* Bordi arrotondati */
+  font-size: 16px; /* Dimensione del font del pulsante */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Effetto di transizione */
+}
+
+.swal2-popup [aria-label="Confirm"]:hover {
+  background-color: #45a049; /* Colore del pulsante "OK" al passaggio del mouse */
+}
+
+.right-box .alert {
+  position: absolute;
+    top: -64px;
+    height: 44px;
+    text-align: center;
+    padding: 10px 12px;
+    width: calc(100% - 24px);
 }
 
 /*------------ For small screens------------*/

@@ -1,6 +1,7 @@
 <script setup>
-import { computed, ref, defineProps } from 'vue';
+import { ref, defineProps } from 'vue';
 import { useTaskStore } from '@/stores/taskStore';
+
 
 const TASK_PROPS = {
   TITLE: 'title',
