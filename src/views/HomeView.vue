@@ -129,7 +129,7 @@
 
 .ellipses-container{
 	width: auto;
-    height: 50rem;
+    height: 35rem;
     border-radius: 50%;
     margin: 0 auto;
     position: relative;
