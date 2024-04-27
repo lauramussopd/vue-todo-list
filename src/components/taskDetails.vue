@@ -14,11 +14,11 @@ const taskStore = useTaskStore();
 
 const newTaskTitle = ref('')
 const _isEditing = ref(false)
-
+const showToast = ref(false);
 
 const deleteTask = (taskId) => {
   taskStore.deleteTask(taskId);
-  const showToast = ref(false); 
+  showToast.value = true;
 };
 
 const _changeTitle = () => {
@@ -40,7 +40,10 @@ const _updateTask = async (fieldToUpdate) => {
     newTaskTitle.value = ''
     _isEditing.value = false
   }
+  showToast.value = true;
 }
+
+
 
 </script>
 
@@ -51,9 +54,7 @@ const _updateTask = async (fieldToUpdate) => {
       <div class="icons">
         <i class="material-icons" @click="deleteTask(task.id)">delete</i>
         <i class="material-icons" :class="{ active: task.is_fav }" @click="_updateTask(TASK_PROPS.IS_FAV)">favorite</i>
-        <!-- <i class="material-icons" @click="_updateTask(TASK_PROPS.IS_COMPLETE)">{{ taskStatus }}</i> -->
-        <i class="material-icons" @click="_updateTask(TASK_PROPS.IS_COMPLETE)"
-          :class="{ active: task.is_complete }">
+        <i class="material-icons" @click="_updateTask(TASK_PROPS.IS_COMPLETE)" :class="{ active: task.is_complete }">
           {{ props.task.is_complete ? 'check_box' : 'check_box_outline_blank' }}
         </i>
         <i class="material-icons" :class="{ active: _isEditing }" @click="_changeTitle">create</i>
@@ -72,10 +73,9 @@ const _updateTask = async (fieldToUpdate) => {
 </template>
 
 <style scoped>
-
-.btn{
-    color: #fff;
-    background-color: var(--dark-color);
+.btn {
+  color: #fff;
+  background-color: var(--dark-color);
 }
 
 .new-title input {
@@ -99,7 +99,8 @@ const _updateTask = async (fieldToUpdate) => {
   justify-content: space-between;
   align-items: center;
 }
-.task-content h6{
+
+.task-content h6 {
   max-width: 150px !important;
 }
 

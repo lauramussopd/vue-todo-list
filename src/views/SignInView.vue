@@ -24,16 +24,9 @@ const createAccount = async () => {
   }
 }
 
-//const showSpinner(){
-//let
-// declare the container where to inject the HTML
-// declare the html to inject ( spinner)
-// inject html
-//}
 
 const signIn = async () => {
   try {
-    // showSpinner();
     await userStore.signIn(email.value, password.value);
 
     successLogIn.value = true;
@@ -117,21 +110,17 @@ watch(() => password.value, () => {
           <div class="input-group mb-5">
             <div v-if="errorMessage !== ''" class="alert alert-danger" role="alert">
               {{ errorMessage }}
-
             </div>
           </div>
           <div class="input-group mb-3">
-            
             <button :class="`btn btn-lg w-100 fs-6 ${successLogIn ? 'success' : ''}`" :disabled="errorMessage !== ''"
               @click="signIn">Login </button>
           </div>
           <div class="row">
             <small>Don't have account? <router-link to="/signup" class="a-signup">Sign Up</router-link>
-              </small>
-              <small>Losing memory? <router-link to="/reset" class="a-signup">Reset your password</router-link>
-              </small>
-
-
+            </small>
+            <small>Losing memory? <router-link to="/reset" class="a-signup">Reset your password</router-link>
+            </small>
           </div>
         </div>
       </div>
@@ -143,6 +132,14 @@ watch(() => password.value, () => {
 .buttonContainer {
   display: grid;
 }
+
+.btn:hover {
+    color: white;
+    background-color: var(--dark-color);
+    border-color: var(--bs-btn-hover-border-color);
+}
+
+
 
 button {
   background-color: var(--primary-color);
@@ -176,11 +173,11 @@ button.success {
 
 .right-box .alert {
   /* position: absolute; */
-    top: 39px;
-    height: 44px;
-    text-align: center;
-    padding: 10px 12px;
-    width: 100%;
+  top: 39px;
+  height: 44px;
+  text-align: center;
+  padding: 10px 12px;
+  width: 100%;
 }
 
 /*------------ Custom Placeholder ------------*/

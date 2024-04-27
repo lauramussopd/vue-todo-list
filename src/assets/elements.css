@@ -12,6 +12,14 @@
   border-color: var(--bs-btn-hover-border-color);
 }
 
+.btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+}
+
+
+
 .btn:focus-visible {
   color: #fff; 
   background-color: var(--dark-color);
@@ -87,7 +95,7 @@ nav {
 .toast {
   position: fixed;
   bottom: 20px;
-  background-color: rgba(252, 252, 212, 0.5);
+  background-color: var(--light-color);
   ;
   border: none;
   z-index: 999;

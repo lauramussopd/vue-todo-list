@@ -32,6 +32,9 @@ const createAccount = async () => {
   }
 }
 
+const resetErrorMessage = () => {
+  errorMessage.value = "";
+}
 
 const seeCurrentUser = async () => {
   try {
@@ -69,15 +72,15 @@ const seeCurrentUser = async () => {
           </div>
             <div class="input-group mb-1">
             <input type="email" v-model="email" class="form-control form-control-lg bg-light fs-6"
-              placeholder="Email address" required/>
+              placeholder="Email address" required @input="resetErrorMessage"/>
           </div>
           <div class="input-group mb-1">
             <input type="text" v-model="name" class="form-control form-control-lg bg-light fs-6"
-              placeholder="Name" required>
+              placeholder="Name" required @input="resetErrorMessage">
           </div>
           <div class="input-group mb-1">
             <input type="password" v-model="password" class="form-control form-control-lg bg-light fs-6"
-              placeholder="Password" required>
+              placeholder="Password" required @input="resetErrorMessage">
           </div>
           <div class="input-group mb-5 d-flex justify-content-between">
           </div>
@@ -85,7 +88,7 @@ const seeCurrentUser = async () => {
             <div v-if="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
           </div>
           <div class="input-group mb-3">
-            <button type="submit" class="btn btn-lg w-100 fs-6" :disabled="buttonOff" >Create account</button>
+            <button type="submit" class="btn btn-lg w-100 fs-6" :disabled="errorMessage !== ''" >Create account</button>
           </div>
           
         </div>
@@ -95,8 +98,24 @@ const seeCurrentUser = async () => {
 </template> 
 
 <style scoped>
+
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+
 .buttonContainer {
   display: grid;
+}
+
+button {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+}
+
+button:disabled {
+  background-color: #44c9c977;
 }
 
 .box-area {
@@ -118,25 +137,10 @@ const seeCurrentUser = async () => {
 .rounded-5 {
   border-radius: 30px;
 }
-/* alert message */
-
-.swal2-popup [aria-label="Confirm"] {
-  background-color: #4CAF50; /* Esempio di colore del pulsante "OK" verde */
-  color: #fff; /* Testo bianco */
-  padding: 10px 20px; /* Padding per spaziatura */
-  border-radius: 5px; /* Bordi arrotondati */
-  font-size: 16px; /* Dimensione del font del pulsante */
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Effetto di transizione */
-}
-
-.swal2-popup [aria-label="Confirm"]:hover {
-  background-color: #45a049; /* Colore del pulsante "OK" al passaggio del mouse */
-}
 
 .right-box .alert {
   position: absolute;
-    top: -64px;
+    top: -48px;
     height: 44px;
     text-align: center;
     padding: 10px 12px;
