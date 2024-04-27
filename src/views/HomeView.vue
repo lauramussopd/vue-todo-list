@@ -1,6 +1,4 @@
 <template>
-
-
 	<div class="ellipses-container">
 		<div class="elipse-content">
 			<h2 class="greeting">Welcome</h2>
@@ -16,9 +14,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 </template>
 
 
@@ -125,24 +120,24 @@
 }
 
 
- @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
-.ellipses-container{
-	width: auto;
-    height: 35rem;
-    border-radius: 50%;
-    margin: 0 auto;
-    position: relative;
+	.ellipses-container {
+		width: auto;
+		height: 35rem;
+		border-radius: 50%;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.elipse-animation {
+		display: none;
+	}
+
+	.greeting {
+		font-size: 1.5rem;
+		letter-spacing: 2rem;
+	}
+
 }
-    .elipse-animation {
-        display: none; 
-    }
-
-    .greeting {
-        font-size: 1.5rem;
-        letter-spacing: 2rem;
-    }
-
-} 
-
 </style>

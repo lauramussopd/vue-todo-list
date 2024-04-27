@@ -120,8 +120,6 @@ watch(() => password.value, () => {
 
             </div>
           </div>
-          <div class="input-group mb-5 d-flex justify-content-between">
-          </div>
           <div class="input-group mb-3">
             
             <button :class="`btn btn-lg w-100 fs-6 ${successLogIn ? 'success' : ''}`" :disabled="errorMessage !== ''"
@@ -129,6 +127,8 @@ watch(() => password.value, () => {
           </div>
           <div class="row">
             <small>Don't have account? <router-link to="/signup" class="a-signup">Sign Up</router-link>
+              </small>
+              <small>Losing memory? <router-link to="/reset" class="a-signup">Reset your password</router-link>
               </small>
 
 
@@ -175,12 +175,12 @@ button.success {
 }
 
 .right-box .alert {
-  position: absolute;
+  /* position: absolute; */
     top: 39px;
     height: 44px;
     text-align: center;
     padding: 10px 12px;
-    width: calc(100% - 24px);
+    width: 100%;
 }
 
 /*------------ Custom Placeholder ------------*/

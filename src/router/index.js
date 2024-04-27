@@ -32,6 +32,11 @@ const router = createRouter({
       component: () => import('@/views/SignUpView.vue')
     }, 
     {
+      path: '/reset',
+      name: 'reset',
+      component: () => import('@/views/ResetPassView.vue')
+    }, 
+    {
       path: '/:pathMatch(.*)*',
       component: () => import('@/views/notFoundView.vue')
     }

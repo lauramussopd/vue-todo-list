@@ -39,6 +39,21 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
+  async function resetPassword(email, newPassword) {
+    try {
+
+      user.value = await resetUserPassword(email, newPassword);
+    } catch (error) {
+      console.log(error);
+      throw new Error("Failed to reset password");
+    }
+  }
+
+
+  async function signIn(email, password) {
+    user.value = await logIn(email, password);
+  }
+
   return {
     // State
     user,
@@ -49,5 +64,6 @@ export const useUserStore = defineStore("user", () => {
     signIn,
     logout,
     isAuthenticated,
+    resetPassword,
   };
 });

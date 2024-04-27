@@ -18,6 +18,7 @@ const _isEditing = ref(false)
 
 const deleteTask = (taskId) => {
   taskStore.deleteTask(taskId);
+  const showToast = ref(false); 
 };
 
 const _changeTitle = () => {

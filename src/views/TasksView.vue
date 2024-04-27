@@ -17,18 +17,16 @@ const setFilter = (selectedFilter) => {
 	console.log(tasksFiltered.value)
 };
 
-const addTask = async (task) => {
-    await taskStore.addTask(task);
-    Swal.fire('Task Added!', 'Your task has been successfully added.', 'success');
-};
+// const addTask = async (task) => {
+// 	await taskStore.addTask(task);
+// 	Swal.fire('Task Added!', 'Your task has been successfully added.', 'success');
+// };
 
 </script>
 
 <template>
-
 	<navbarVue />
 	<div class="row align-items-center">
-
 		<nav class="filter mb-4">
 			<button @click="setFilter(TASKS_FILTER_METHODS.ALL)">All tasks</button>
 			<button @click="setFilter(TASKS_FILTER_METHODS.FAVS)">Favourites</button>
@@ -42,13 +40,13 @@ const addTask = async (task) => {
 		<div class="input-group mb-5 d-flex justify-content-between">
 		</div>
 		<div class="input-group mb-3">
-			 <div class="task-list-tasks" v-if="tasksFiltered.length">
+			<div class="task-list-tasks" v-if="tasksFiltered.length">
 				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
 				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
 				</div>
-			</div> 
-		
+			</div>
+
 		</div>
 	</div>
 
@@ -91,9 +89,8 @@ button {
 }
 
 button:hover {
-  color: #fff;
-  background-color: var(--dark-color);
-  border-color: var(--bs-btn-hover-border-color);
+	color: #fff;
+	background-color: var(--dark-color);
+	border-color: var(--bs-btn-hover-border-color);
 }
-
 </style>
