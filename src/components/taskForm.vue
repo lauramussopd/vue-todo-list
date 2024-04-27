@@ -42,7 +42,6 @@ const handleSubmit = () => {
 </template>
 
 <style scoped>
-
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -75,5 +74,18 @@ button:hover {
     color: #fff;
     background-color: var(--dark-color);
     border-color: var(--bs-btn-hover-border-color);
+}
+
+/*------------ For small screens------------*/
+@media only screen and (max-width: 768px) {
+    .toast {
+        position: static; 
+        bottom: 20px;
+        background-color: var(--light-color);
+        border: none;
+        z-index: 999;
+        right: 20px;
+        width: auto;
+    }
 }
 </style>

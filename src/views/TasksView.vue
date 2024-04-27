@@ -17,10 +17,6 @@ const setFilter = (selectedFilter) => {
 	console.log(tasksFiltered.value)
 };
 
-// const addTask = async (task) => {
-// 	await taskStore.addTask(task);
-// 	Swal.fire('Task Added!', 'Your task has been successfully added.', 'success');
-// };
 
 </script>
 
