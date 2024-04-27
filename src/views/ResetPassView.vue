@@ -53,7 +53,11 @@ import navbarVue from '@/components/navbarVue.vue';
 .buttonContainer {
   display: grid;
 }
-
+.btn:hover {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--bs-btn-hover-border-color);
+}
 .box-area {
   width: 930px;
 }
