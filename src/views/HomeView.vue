@@ -16,7 +16,6 @@
 	</div>
 </template>
 
-
 <style scoped>
 .greeting {
 	position: absolute;
@@ -38,7 +37,6 @@
 	z-index: 999;
 	display: flex;
 	justify-content: center;
-
 }
 
 .btn {
@@ -50,16 +48,11 @@
 	margin: 20px;
 }
 
-
-
-
 .ellipses-container {
 	width: 50rem;
 	height: 50rem;
-	border-radius: 50%;
-	margin: 0 auto;
+	margin: auto auto;
 	position: relative;
-
 }
 
 .ellipses {
@@ -73,7 +66,6 @@
 	height: 100%;
 	border-width: 0px;
 	animation: ellipsesOrbit 20s linear infinite;
-
 }
 
 .ellipses__outer--thick {
@@ -97,7 +89,7 @@
 
 }
 
-
+/* ANIMATION */
 
 @keyframes ellipsesRotate {
 	0% {
@@ -121,7 +113,6 @@
 
 
 @media screen and (max-width: 768px) {
-
 	.ellipses-container {
 		width: auto;
 		height: 35rem;

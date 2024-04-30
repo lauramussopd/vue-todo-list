@@ -3,26 +3,19 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/userStore'
 
-
 import navbarVue from '@/components/navbarVue.vue';
-
-
 </script>
 
 <template>
   <navbarVue />
   <!----------------------- Main Container -------------------------->
-
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
-
     <!----------------------- Login Container -------------------------->
-
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
-
       <form class="col-md-12" @submit.prevent="createAccount">
         <div class="row align-items-center">
           <div class="header-text mb-4">
-            <h2>Reset your password</h2>
+            <h2>Reset your password - WORK IN PROGRESS</h2>
           </div>
           <div class="input-group mb-1">
             <input type="email" v-model="email" class="form-control form-control-lg bg-light fs-6"
@@ -42,7 +35,6 @@ import navbarVue from '@/components/navbarVue.vue';
           <div class="input-group mb-3">
             <button type="submit" class="btn btn-lg w-100 fs-6" :disabled="buttonOff">Reset Password</button>
           </div>
-
         </div>
       </form>
     </div>
@@ -53,11 +45,13 @@ import navbarVue from '@/components/navbarVue.vue';
 .buttonContainer {
   display: grid;
 }
+
 .btn:hover {
-    color: white;
-    background-color: var(--primary-color);
-    border-color: var(--bs-btn-hover-border-color);
+  color: white;
+  background-color: var(--primary-color);
+  border-color: var(--bs-btn-hover-border-color);
 }
+
 .box-area {
   width: 930px;
 }
@@ -84,7 +78,6 @@ import navbarVue from '@/components/navbarVue.vue';
   height: 44px;
   text-align: center;
   padding: 10px 12px;
-  /* width: calc(100% - 24px); */
 }
 
 /*------------ For small screens------------*/

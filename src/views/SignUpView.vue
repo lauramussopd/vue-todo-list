@@ -90,6 +90,10 @@ const seeCurrentUser = async () => {
           <div class="input-group mb-3">
             <button type="submit" class="btn btn-lg w-100 fs-6" :disabled="errorMessage !== ''" >Create account</button>
           </div>
+          <div class="row">
+            <small>Already have an account? <router-link to="/signin" class="a-signin">Sign In</router-link>
+            </small>
+          </div>
           
         </div>
       </form>
@@ -112,6 +116,12 @@ button {
   background-color: var(--primary-color);
   border: none;
   color: #fff;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: var(--dark-color);
+  border-color: var(--bs-btn-hover-border-color);
 }
 
 button:disabled {
@@ -137,6 +147,8 @@ button:disabled {
 .rounded-5 {
   border-radius: 30px;
 }
+
+
 
 .right-box .alert {
   position: absolute;

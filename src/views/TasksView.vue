@@ -45,9 +45,6 @@ const setFilter = (selectedFilter) => {
 
 		</div>
 	</div>
-
-
-
 </template>
 
 <style scoped>
@@ -67,7 +64,7 @@ button {
 /* filter nav */
 
 .filter {
-	width: 640px;
+	width: 100%;
 	margin: 10px auto;
 	text-align: right;
 }

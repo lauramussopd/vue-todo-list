@@ -17,14 +17,12 @@ const handleSubmit = () => {
             });
             newTask.value = '';
             showToast.value = true;
-
             setTimeout(() => showToast.value = false, 2000)
         }
     } catch (error) {
         console.error('Error showing toast:', error);
     }
 };
-
 </script>
 
 <template>
@@ -79,7 +77,7 @@ button:hover {
 /*------------ For small screens------------*/
 @media only screen and (max-width: 768px) {
     .toast {
-        position: static; 
+        position: static;
         bottom: 20px;
         background-color: var(--light-color);
         border: none;

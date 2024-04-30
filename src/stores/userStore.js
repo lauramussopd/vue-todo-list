@@ -41,14 +41,12 @@ export const useUserStore = defineStore("user", () => {
 
   async function resetPassword(email, newPassword) {
     try {
-
       user.value = await resetUserPassword(email, newPassword);
     } catch (error) {
       console.log(error);
       throw new Error("Failed to reset password");
     }
   }
-
 
   async function signIn(email, password) {
     user.value = await logIn(email, password);
@@ -57,7 +55,6 @@ export const useUserStore = defineStore("user", () => {
   return {
     // State
     user,
-
     // Actions
     createAccount,
     fetchUser,

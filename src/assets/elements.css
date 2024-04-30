@@ -13,15 +13,13 @@
 }
 
 .btn:hover {
-    color: var(--bs-btn-hover-color);
-    background-color: var(--bs-btn-hover-bg);
-    border-color: var(--bs-btn-hover-border-color);
+  color: var(--bs-btn-hover-color);
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
 }
 
-
-
 .btn:focus-visible {
-  color: #fff; 
+  color: #fff;
   background-color: var(--dark-color);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
@@ -57,32 +55,30 @@ i.active {
   color: var(--dark-color);
 }
 
-
 nav {
-	width: 100%;
-	font-size: 12px;
-	text-align: center;
-  }
-  
-  .navbar {
-	width: 100%;
-	background-color: #44c9c8;
-  }
-  
-  nav a.router-link-exact-active {
-	color: var(--color-text);
-  }
-  
-  nav a.router-link-exact-active:hover {
-	background-color: transparent;
-  }
-
-  .navbar-collapse {
-    flex-basis: 100%;
-    flex-grow: 0;
-    align-items: center;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
 }
 
+.navbar {
+  width: 100%;
+  background-color: #44c9c8;
+}
+
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 0;
+  align-items: center;
+}
 
 .row {
   --bs-gutter-x: 1.5rem;
@@ -96,9 +92,22 @@ nav {
   position: fixed;
   bottom: 20px;
   background-color: var(--light-color);
-  ;
   border: none;
   z-index: 999;
   right: 20px;
   width: auto;
+}
+
+.a-signup {
+  text-decoration: underline;
+  color: var(--dark-color);
+}
+
+.a-signin {
+  text-decoration: underline;
+  color: var(--dark-color);
+}
+
+.mb-5 {
+  margin-bottom: 2rem !important;
 }

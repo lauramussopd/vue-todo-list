@@ -2,7 +2,6 @@
 import { ref, defineProps } from 'vue';
 import { useTaskStore } from '@/stores/taskStore';
 
-
 const TASK_PROPS = {
   TITLE: 'title',
   IS_FAV: 'is_fav',
@@ -43,8 +42,6 @@ const _updateTask = async (fieldToUpdate) => {
   showToast.value = true;
 }
 
-
-
 </script>
 
 <template>
@@ -69,7 +66,6 @@ const _updateTask = async (fieldToUpdate) => {
     </div>
 
   </div>
-
 </template>
 
 <style scoped>
@@ -103,7 +99,6 @@ const _updateTask = async (fieldToUpdate) => {
 .task-content h6 {
   max-width: 150px !important;
 }
-
 
 .task .icon {
   text-align: right;

@@ -24,7 +24,6 @@ const createAccount = async () => {
   }
 }
 
-
 const signIn = async () => {
   try {
     await userStore.signIn(email.value, password.value);
@@ -71,28 +70,19 @@ watch(() => password.value, () => {
 })
 </script>
 
-
 <template>
-
   <navbarVue />
   <!----------------------- Main Container -------------------------->
-
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
-
     <!----------------------- Login Container -------------------------->
-
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
-
       <!--------------------------- Left Box ----------------------------->
-
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
         style="background: var(--dark-color);">
         <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
         <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
       </div>
-
       <!-------------------- ------ Right Box ---------------------------->
-
       <div class="col-md-6 right-box">
         <div class="row align-items-center">
           <div class="header-text mb-4">
@@ -114,7 +104,7 @@ watch(() => password.value, () => {
           </div>
           <div class="input-group mb-3">
             <button :class="`btn btn-lg w-100 fs-6 ${successLogIn ? 'success' : ''}`" :disabled="errorMessage !== ''"
-              @click="signIn">Login </button>
+              @click="signIn">Login</button>
           </div>
           <div class="row">
             <small>Don't have account? <router-link to="/signup" class="a-signup">Sign Up</router-link>
@@ -134,12 +124,10 @@ watch(() => password.value, () => {
 }
 
 .btn:hover {
-    color: white;
-    background-color: var(--dark-color);
-    border-color: var(--bs-btn-hover-border-color);
+  color: white;
+  background-color: var(--dark-color);
+  border-color: var(--bs-btn-hover-border-color);
 }
-
-
 
 button {
   background-color: var(--primary-color);
@@ -154,11 +142,6 @@ button:disabled {
 
 button.success {
   background-color: var(--dark-color);
-}
-
-.a-signup {
-  text-decoration: underline;
-  color: var(--dark-color);
 }
 
 /*------------ Login container ------------*/

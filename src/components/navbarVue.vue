@@ -17,7 +17,7 @@ const toggleNavbar = () => {
 const _handleLogOut = () => {
     userStore.logout()
         .then(() => {
-            router.push({ name: 'signin' }); // Navigare alla pagina di accesso dopo il logout
+            router.push({ name: 'signin' });
         })
         .catch(err => {
             console.error(err);
@@ -35,15 +35,8 @@ const _handleLogOut = () => {
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div :class="{ 'collapse': !isNavbarOpen, 'navbar-collapse': true }">
                     <ul class="navbar-nav me-auto m-0">
-                        <!-- <li class="nav-item">
-                            <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <router-link to="/signin" class="nav-link">Tasks</router-link>
-                        </li> -->
                         <li class="nav-item" v-if="!userStore.isAuthenticated">
                             <router-link to="/signin" class="nav-link">Sign In</router-link>
                         </li>
@@ -56,9 +49,6 @@ const _handleLogOut = () => {
         </nav>
     </header>
 </template>
-
-
-
 
 <style scoped>
 nav {
@@ -87,10 +77,11 @@ nav {
 .navbar-toggler {
     border: none;
 }
+
 .navbar-toggler:focus {
     text-decoration: none;
     outline: 0;
-    box-shadow: none; 
+    box-shadow: none;
 }
 
 .navbar-toggler-icon {
