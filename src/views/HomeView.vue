@@ -51,7 +51,7 @@
 .ellipses-container {
 	width: 50rem;
 	height: 50rem;
-	margin: auto auto;
+	margin: 150px auto;
 	position: relative;
 }
 
