@@ -6,37 +6,17 @@ import taskDetails from '@/components/taskDetails.vue';
 import taskForm from '@/components/taskForm.vue';
 import { TASKS_FILTER_METHODS } from '@/utils/constants'
 
+
 import navbarVue from '@/components/navbarVue.vue';
 
 const taskStore = useTaskStore();
 const { tasksFiltered } = storeToRefs(taskStore);
-const filterText = ref(localStorage.getItem('filterText') || '');
+const filterText = ref('');
 
 const setFilter = (selectedFilter) => {
 	taskStore.changeFilterTaskMethod(selectedFilter)
-	console.log(tasksFiltered.value);
-
-	if (tasksFiltered.value) {
-        // Imposta il testo del filtro in base alla selezione
-        switch(selectedFilter) {
-            case TASKS_FILTER_METHODS.ALL:
-                filterText.value = `You have ${tasksFiltered.value.length} tasks left to do`;
-                break;
-            case TASKS_FILTER_METHODS.FAVS:
-                filterText.value = `You have ${tasksFiltered.value.length} tasks in favourite`;
-                break;
-            case TASKS_FILTER_METHODS.COMPLETE:
-                filterText.value = `You have ${tasksFiltered.value.length} tasks completed`;
-                break;
-            default:
-                filterText.value = `You have ${tasksFiltered.value.length} tasks `;
-                break;
-        }
-		localStorage.setItem('filterText', filterText.value);
-	}
+	console.log(tasksFiltered.value)
 };
-
-
 </script>
 
 <template>
@@ -56,8 +36,7 @@ const setFilter = (selectedFilter) => {
 		</div>
 		<div class="input-group mb-3">
 			<div class="task-list-tasks" v-if="tasksFiltered.length">
-				<!-- <p>You have {{ tasksFiltered.length }} tasks left to do</p> -->
-				<p>{{ filterText }}</p>
+				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
 				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
 				</div>
@@ -123,3 +102,4 @@ button:hover {
 	border-color: var(--bs-btn-hover-border-color);
 }
 </style>
+
