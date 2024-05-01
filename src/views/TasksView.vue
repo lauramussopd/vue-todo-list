@@ -71,7 +71,7 @@ button {
 /* task list */
 
 .task-list-tasks {
-	max-height: 600px; 
+	max-height: 400px; 
 	overflow-y: auto;
 	max-width: 400px;
 	margin: 20px auto;
@@ -100,6 +100,33 @@ button:hover {
 	color: #fff;
 	background-color: var(--dark-color);
 	border-color: var(--bs-btn-hover-border-color);
+}
+
+/*------------ For small screens------------*/
+@media only screen and (max-width: 768px) {
+	.task-list-tasks {
+	max-height: 300px; 
+	overflow-y: auto;
+	max-width: 400px;
+	margin: 20px auto;
+	width: 400px;
+	padding: 20px;
+	background-color: rgba(252, 252, 212, 0.5);
+	border-radius: 5px;
+	box-shadow: 3px 3px 21px #DDD;
+}
+  .box-area {
+    margin: 0 10px;
+  }
+
+  .left-box {
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .right-box {
+    padding: 20px;
+  }
 }
 </style>
 
