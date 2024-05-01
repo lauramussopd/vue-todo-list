@@ -5,16 +5,35 @@ import { useTaskStore } from '@/stores/taskStore';
 import taskDetails from '@/components/taskDetails.vue';
 import taskForm from '@/components/taskForm.vue';
 import { TASKS_FILTER_METHODS } from '@/utils/constants'
-import Swal from 'sweetalert2';
 
 import navbarVue from '@/components/navbarVue.vue';
 
 const taskStore = useTaskStore();
 const { tasksFiltered } = storeToRefs(taskStore);
+const filterText = ref(localStorage.getItem('filterText') || '');
 
 const setFilter = (selectedFilter) => {
 	taskStore.changeFilterTaskMethod(selectedFilter)
-	console.log(tasksFiltered.value)
+	console.log(tasksFiltered.value);
+
+	if (tasksFiltered.value) {
+        // Imposta il testo del filtro in base alla selezione
+        switch(selectedFilter) {
+            case TASKS_FILTER_METHODS.ALL:
+                filterText.value = `You have ${tasksFiltered.value.length} tasks left to do`;
+                break;
+            case TASKS_FILTER_METHODS.FAVS:
+                filterText.value = `You have ${tasksFiltered.value.length} tasks in favourite`;
+                break;
+            case TASKS_FILTER_METHODS.COMPLETE:
+                filterText.value = `You have ${tasksFiltered.value.length} tasks completed`;
+                break;
+            default:
+                filterText.value = `You have ${tasksFiltered.value.length} tasks `;
+                break;
+        }
+		localStorage.setItem('filterText', filterText.value);
+	}
 };
 
 
@@ -37,7 +56,8 @@ const setFilter = (selectedFilter) => {
 		</div>
 		<div class="input-group mb-3">
 			<div class="task-list-tasks" v-if="tasksFiltered.length">
-				<p>You have {{ tasksFiltered.length }} tasks left to do</p>
+				<!-- <p>You have {{ tasksFiltered.length }} tasks left to do</p> -->
+				<p>{{ filterText }}</p>
 				<div v-for="task in tasksFiltered">
 					<taskDetails :task="task" />
 				</div>
@@ -72,6 +92,8 @@ button {
 /* task list */
 
 .task-list-tasks {
+	max-height: 600px; 
+	overflow-y: auto;
 	max-width: 400px;
 	margin: 20px auto;
 	width: 400px;
@@ -80,6 +102,20 @@ button {
 	border-radius: 5px;
 	box-shadow: 3px 3px 21px #DDD;
 }
+
+.task-list-tasks::-webkit-scrollbar {
+    width: 6px; 
+}
+
+.task-list-tasks::-webkit-scrollbar-thumb {
+    background-color: var(--dark-color);
+    border-radius: 5px; 
+}
+
+.task-list-tasks::-webkit-scrollbar-track {
+    background-color: #f8f9fa; 
+}
+
 
 button:hover {
 	color: #fff;
