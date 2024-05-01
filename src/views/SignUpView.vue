@@ -59,7 +59,7 @@ const seeCurrentUser = async () => {
       <!--------------------------- Left Box ----------------------------->
       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
         style="background: var(--dark-color);">
-        <p class="text-white fs-2" style="font-weight: 600;">To Do List</p>
+        <p class="text-white fs-2" style="font-weight: 600;">Remember Me!</p>
         <small class="text-white text-wrap text-center" style="width: 17rem;">Be more organized</small>
       </div>
       <!-------------------- ------ Right Box ---------------------------->
