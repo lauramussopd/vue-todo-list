@@ -30,7 +30,7 @@ const _handleLogOut = () => {
     <header>
         <nav class="navbar navbar-expand-sm">
             <div class="container-fluid">
-                <router-link to="" class="navbar-brand">Remember Me!</router-link>
+                <router-link to="" class="navbar-brand">TODO</router-link>
                 <button class="navbar-toggler" type="button" @click="toggleNavbar" aria-controls="navbarsExample05"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

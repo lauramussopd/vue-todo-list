@@ -71,7 +71,7 @@ button {
 /* task list */
 
 .task-list-tasks {
-	max-height: 400px; 
+	max-height: 500px; 
 	overflow-y: auto;
 	max-width: 400px;
 	margin: 20px auto;
